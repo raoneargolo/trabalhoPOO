@@ -50,8 +50,9 @@ public class TelaDeLogin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton BotaoSalvar = new JButton("Salvar"); // Botão salvar
-		BotaoSalvar.addActionListener(new ActionListener() {
+		JButton BotaoEntrar = new JButton("Entrar");
+		BotaoEntrar.setBackground(Color.WHITE);
+		BotaoEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
@@ -68,9 +69,19 @@ public class TelaDeLogin extends JFrame {
 		JLabel lblLogin = new JLabel("Login"); //Label de login
 		lblLogin.setForeground(Color.BLACK);
 		lblLogin.setFont(new Font("Open Sans", Font.PLAIN, 40));
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(209, Short.MAX_VALUE)
+					.addComponent(lblLogin, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
+					.addGap(201))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(28)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -79,30 +90,32 @@ public class TelaDeLogin extends JFrame {
 						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNome, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(257, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(231, Short.MAX_VALUE)
-					.addComponent(BotaoSalvar)
-					.addGap(219))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(202)
-					.addComponent(lblLogin, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(208, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addGap(221)
+					.addComponent(BotaoEntrar, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(223, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addGap(80)
+					.addComponent(btnCadastrar)
+					.addContainerGap(342, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(31)
+					.addContainerGap()
 					.addComponent(lblLogin, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-					.addGap(38)
+					.addGap(26)
 					.addComponent(lblNome)
-					.addPreferredGap(ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(9)
+					.addGap(18)
 					.addComponent(lblSenha)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(78)
-					.addComponent(BotaoSalvar)
+					.addGap(18)
+					.addComponent(BotaoEntrar)
+					.addPreferredGap(ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+					.addComponent(btnCadastrar)
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);
