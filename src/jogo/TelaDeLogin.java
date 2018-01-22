@@ -73,6 +73,8 @@ public class TelaDeLogin extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				TelaCadastro cad = new TelaCadastro(); //Chamando a tela de Cadastro
+				cad.setVisible(true);
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
