@@ -79,9 +79,11 @@ public class TelaDeLogin extends JFrame {
 			
 			}
 		});
+		
+		JButton btnEntrarComoConvidado = new JButton("Entrar como convidado");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(109, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -92,17 +94,20 @@ public class TelaDeLogin extends JFrame {
 						.addComponent(passwordField, Alignment.TRAILING)
 						.addComponent(textField, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
 					.addGap(138))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(222)
 					.addComponent(BotaoEntrar, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(224, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(440, Short.MAX_VALUE)
-					.addComponent(btnCadastrar))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addGap(202)
 					.addComponent(lblLogin, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(210, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnEntrarComoConvidado))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnCadastrar))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -119,8 +124,10 @@ public class TelaDeLogin extends JFrame {
 						.addComponent(lblSenha))
 					.addGap(18)
 					.addComponent(BotaoEntrar)
-					.addPreferredGap(ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-					.addComponent(btnCadastrar))
+					.addPreferredGap(ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+					.addComponent(btnCadastrar)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnEntrarComoConvidado))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
