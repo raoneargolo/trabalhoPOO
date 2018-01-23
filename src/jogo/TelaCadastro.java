@@ -52,7 +52,9 @@ public class TelaCadastro extends JFrame {
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				//CAMPO PARA CHAMADA PARA A JANELA TELA INICIAL
+				TelaInicial obj = new TelaInicial();
+				obj.setVisible(true);
 			}
 		});
 		
