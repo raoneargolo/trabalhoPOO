@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaInicial extends JFrame {
 
@@ -47,10 +49,32 @@ public class TelaInicial extends JFrame {
 		mnInicio.add(mntmSalvar);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Sair");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO adicionar açao de fechar a app
+	
+			}
+		});
 		mnInicio.add(mntmNewMenuItem);
 		
-		JMenu mnNewMenu_1 = new JMenu("New menu");
-		menuBar.add(mnNewMenu_1);
+		JMenu mnHistorico = new JMenu("Historico");
+		menuBar.add(mnHistorico);
+		
+		JMenuItem Vitorias = new JMenuItem("Vitorias");
+		mnHistorico.add(Vitorias);
+		
+		JMenuItem Derrotas = new JMenuItem("Derrotas");
+		mnHistorico.add(Derrotas);
+		
+		JMenuItem Empates = new JMenuItem("Empates");
+		mnHistorico.add(Empates);
+		
+		JMenuItem UltimosJogos = new JMenuItem("Utimos 10 jogos");
+		UltimosJogos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnHistorico.add(UltimosJogos);
 		
 		JMenu mnNewMenu_2 = new JMenu("New menu");
 		menuBar.add(mnNewMenu_2);
