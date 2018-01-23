@@ -75,6 +75,7 @@ public class TelaDeLogin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				TelaCadastro cad = new TelaCadastro(); //Chamando a tela de Cadastro
 				cad.setVisible(true);
+			
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
