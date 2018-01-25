@@ -45,8 +45,8 @@ public class TelaInicial extends JFrame {
 		JMenu mnInicio = new JMenu("Inicio");
 		menuBar.add(mnInicio);
 		
-		JMenuItem mntmSalvar = new JMenuItem("Salvar");
-		mnInicio.add(mntmSalvar);
+		JMenuItem mntmNovoJogo = new JMenuItem("Novo Jogo");
+		mnInicio.add(mntmNovoJogo);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Sair");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
@@ -75,9 +75,6 @@ public class TelaInicial extends JFrame {
 			}
 		});
 		mnHistorico.add(UltimosJogos);
-		
-		JMenu mnNewMenu_2 = new JMenu("New menu");
-		menuBar.add(mnNewMenu_2);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
