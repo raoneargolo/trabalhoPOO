@@ -43,8 +43,9 @@ public class TelaCadastro extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaCadastro() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 561, 407);
+		setResizable(false);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
+		setBounds(100, 100, 661, 455);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

@@ -48,7 +48,7 @@ public class TelaInicial extends JFrame {
 	 */
 	public TelaInicial() {
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 684, 481);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -60,33 +60,25 @@ public class TelaInicial extends JFrame {
 		JMenuItem mntmNovoJogo = new JMenuItem("Novo Jogo");
 		mnInicio.add(mntmNovoJogo);
 		
+		mntmNovoJogo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				teste T1 = new teste(); // chamando a jenela do jogo
+				T1.setVisible(true);
+			}
+		});
+		
+		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Sair");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO adicionar açao de fechar a app
+				
+				System.exit(0); // Comando para fechar a janela atual
 	
 			}
 		});
 		mnInicio.add(mntmNewMenuItem);
-		
-		JMenu mnHistorico = new JMenu("Historico");
-		menuBar.add(mnHistorico);
-		
-		JMenuItem Vitorias = new JMenuItem("Vitorias");
-		mnHistorico.add(Vitorias);
-		
-		JMenuItem Derrotas = new JMenuItem("Derrotas");
-		mnHistorico.add(Derrotas);
-		
-		JMenuItem Empates = new JMenuItem("Empates");
-		mnHistorico.add(Empates);
-		
-		JMenuItem UltimosJogos = new JMenuItem("Utimos 10 jogos");
-		UltimosJogos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		mnHistorico.add(UltimosJogos);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -108,48 +100,68 @@ public class TelaInicial extends JFrame {
 		
 		table = new JTable(11,3);
 		
+		String[] columnNames = {"Vitoria","Derrota","Empate"};
+		Object[][] data = {
+			    {"Vitoria","Derrota","Empate"},
+			    {"John", "Doe","Rowing", new Integer(3), new Boolean(true)},
+			    {"Sue", "Black","Knitting", new Integer(2), new Boolean(false)},
+			    {"Jane", "White","Speed reading", new Integer(20), new Boolean(true)},
+			    {"Joe", "Brown","Pool", new Integer(10), new Boolean(false)}
+			};
+		
+		JTable table = new JTable(data, columnNames);
+		
+		JLabel lblUltimosJogos = new JLabel("Ultimos 10 Jogos");
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(54)
-					.addComponent(table, GroupLayout.PREFERRED_SIZE, 251, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(textFieldVitorias, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblVitorias)
-							.addGap(32))
-						.addComponent(textFieldDerrotas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textFieldEmpates, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(54)
+							.addComponent(table, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
+							.addGap(79)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(textFieldVitorias, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblVitorias)
+									.addGap(32))
+								.addComponent(textFieldDerrotas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textFieldEmpates, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblDerrotas)
+									.addGap(31))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblEmpates)
+									.addGap(28))))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblDerrotas)
-							.addGap(31))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblEmpates)
-							.addGap(28))))
+							.addGap(168)
+							.addComponent(lblUltimosJogos)))
+					.addContainerGap(40, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-							.addGap(60)
-							.addComponent(table, GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap(201, Short.MAX_VALUE)
-							.addComponent(lblVitorias)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textFieldVitorias, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(29)
-							.addComponent(lblEmpates)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textFieldEmpates, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(22)
-							.addComponent(lblDerrotas)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textFieldDerrotas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(26)
+					.addComponent(lblUltimosJogos)
+					.addGap(4)
+					.addComponent(table, GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
 					.addGap(23))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(114, Short.MAX_VALUE)
+					.addComponent(lblVitorias)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(textFieldVitorias, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(29)
+					.addComponent(lblEmpates)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(textFieldEmpates, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(22)
+					.addComponent(lblDerrotas)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(textFieldDerrotas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(110))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

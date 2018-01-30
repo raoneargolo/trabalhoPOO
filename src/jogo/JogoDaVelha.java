@@ -1,6 +1,7 @@
 package jogo;
 
 import java.awt.EventQueue;
+import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -22,18 +23,18 @@ public class JogoDaVelha {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JogoDaVelha window = new JogoDaVelha();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					JogoDaVelha window = new JogoDaVelha();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
@@ -93,7 +94,7 @@ public class JogoDaVelha {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -325,4 +326,6 @@ public class JogoDaVelha {
 		button9.setBounds(288, 174, 146, 87);
 		frame.getContentPane().add(button9);
 	}
+
+
 }
