@@ -1,5 +1,4 @@
 package jogo;
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JPasswordField;
@@ -26,9 +26,11 @@ public class TelaLogon extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JPasswordField passwordField;
-	private JTextField textField;
+	private JPasswordField campoSenha;
+	private JTextField campoUsuario;
 	private static TelaLogon frame;
+	static String usuario;
+	private static String senha;
 	/**
 	 * Launch the application.
 	 */
@@ -63,14 +65,15 @@ public class TelaLogon extends JFrame {
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
-		passwordField = new JPasswordField();
-
+		campoSenha = new JPasswordField();
+		
+		
 		JLabel lblUsurio = new JLabel("Usu\u00E1rio");
 		lblUsurio.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
-		textField = new JTextField();
-		textField.setColumns(10);
-
+		campoUsuario = new JTextField();
+		campoUsuario.setColumns(10);
+		
 		JButton btnEntrarComoConvidade = new JButton("Entrar como convidado");
 		btnEntrarComoConvidade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -97,7 +100,14 @@ public class TelaLogon extends JFrame {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				boolean validacao = true;
+				
+				usuario = campoUsuario.getText();
+				senha = campoSenha.getText();
+				
+				boolean validacao = false;
+				
+				validacao = Validacao.ValidacaoUsuarioSenha(usuario,senha);
+				
 				if(validacao == true) {
 					TelaInicial ti = new TelaInicial(frame);
 					contentPane.setVisible(false);
@@ -105,7 +115,9 @@ public class TelaLogon extends JFrame {
 					setContentPane(ti);
 					ti.setRequestFocusEnabled(true);
 				} else {
-					//
+					JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos! Por favor tente novamente");
+					campoUsuario.setText("");
+					campoSenha.setText("");
 				}
 			}
 		});
@@ -125,9 +137,9 @@ public class TelaLogon extends JFrame {
 												.addComponent(lblSenha).addComponent(lblUsurio))
 										.addGap(18)
 										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(textField, GroupLayout.PREFERRED_SIZE, 154,
+												.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, 154,
 														GroupLayout.PREFERRED_SIZE)
-												.addComponent(passwordField, 154, 154, 154))
+												.addComponent(campoSenha, 154, 154, 154))
 										.addGap(155))
 								.addGroup(Alignment.TRAILING,
 										gl_contentPane.createSequentialGroup().addComponent(lblLogo).addGap(189)))
@@ -142,12 +154,12 @@ public class TelaLogon extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(lblLogo)
 						.addPreferredGap(ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblUsurio))
 						.addGap(30)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								.addComponent(campoSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblSenha))
 						.addGap(51).addComponent(btnEntrar).addGap(67).addComponent(btnNovoJogador)
