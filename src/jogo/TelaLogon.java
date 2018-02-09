@@ -77,6 +77,7 @@ public class TelaLogon extends JFrame {
 		JButton btnEntrarComoConvidade = new JButton("Entrar como convidado");
 		btnEntrarComoConvidade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				usuario = "Visitante";
 				TelaInicial ti = new TelaInicial(frame);
 				contentPane.setVisible(false);
 				ti.setVisible(true);
