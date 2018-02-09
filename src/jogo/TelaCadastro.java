@@ -3,6 +3,7 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -14,11 +15,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class TelaCadastro extends JPanel {
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
-	private JTextField textField;
-	private JTextField textField_1;
-
+	private JPasswordField campoConfirmarSenha;
+	private JPasswordField campoSenha;
+	private JTextField campoUsuario;
+	private JTextField campoNome;
+	static String nome;
+	static String usuario;
+	static String senha;
+	static String confirmarSenha;
 	/**
 	 * Create the panel.
 	 */
@@ -39,21 +43,62 @@ public class TelaCadastro extends JPanel {
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false); //setar o panel como falso
-				TelaInicial ti = new TelaInicial(frame); //crio objeto do proximo panel
-				frame.setContentPane(ti); //colocar no frame o proximo panel
+				
+				nome = campoNome.getText();
+				usuario = campoUsuario.getText();
+				senha = campoSenha.getText();
+				confirmarSenha = campoConfirmarSenha.getText();
+				
+				boolean senhasIguais = Validacao.SenhaIgualConfirmarSenha(senha, confirmarSenha);
+				boolean usuarioNovo = Validacao.ValidacaoUsuarioCadastro(usuario);
+				
+				if(usuarioNovo == true && senhasIguais == true) { //Novo usuário disponível e senhas conferem (iguais)
+					
+					Validacao.CadastrarUsuario(usuario, senha);
+					
+					JOptionPane.showMessageDialog(null, "Usuário cadastrado!");
+					
+					setVisible(false); //setar o panel como falso
+					TelaInicial ti = new TelaInicial(frame); //crio objeto do proximo panel
+					frame.setContentPane(ti); //colocar no frame o proximo panel
+				}
+				
+				if(usuarioNovo == true && senhasIguais == false) { //Usuário disponível e senhas não conferem (diferentes)
+					
+					JOptionPane.showMessageDialog(null, "As senhas não conferem. Favor inserir nova senha");
+					
+					campoSenha.setText("");
+					campoConfirmarSenha.setText("");
+				}
+				
+				if(usuarioNovo == false && senhasIguais == true) { //Usuário indisponível e senhas conferem (iguais)
+					
+					JOptionPane.showMessageDialog(null, "Já existe um usuário igual! Por favor, escolha outro");
+					
+					campoUsuario.setText("");
+					campoSenha.setText("");
+					campoConfirmarSenha.setText("");
+				}
+				if(usuarioNovo == false && senhasIguais == false) {
+					
+					JOptionPane.showMessageDialog(null, "Já existe um usuário igual e as senhas não conferem. Por favor, "
+							+ "escolha outro usuário e senha");
+					campoUsuario.setText("");
+					campoSenha.setText("");
+					campoConfirmarSenha.setText("");
+				}
 			}
 		});
 
-		passwordField = new JPasswordField();
+		campoConfirmarSenha = new JPasswordField();
 
-		passwordField_1 = new JPasswordField();
+		campoSenha = new JPasswordField();
 
-		textField = new JTextField();
-		textField.setColumns(10);
+		campoUsuario = new JTextField();
+		campoUsuario.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		campoNome = new JTextField();
+		campoNome.setColumns(10);
 
 		JLabel lblCadastro = new JLabel("Cadastro");
 		lblCadastro.setFont(new Font("Tahoma", Font.PLAIN, 26));
@@ -63,7 +108,7 @@ public class TelaCadastro extends JPanel {
 						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addGroup(groupLayout.createSequentialGroup().addContainerGap()
 										.addComponent(lblNewLabel_3).addPreferredGap(ComponentPlacement.UNRELATED)
-										.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 149,
+										.addComponent(campoConfirmarSenha, GroupLayout.PREFERRED_SIZE, 149,
 												GroupLayout.PREFERRED_SIZE)
 										.addPreferredGap(ComponentPlacement.RELATED))
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -73,15 +118,15 @@ public class TelaCadastro extends JPanel {
 																.addComponent(lblNewLabel).addComponent(lblNewLabel_1))
 														.addPreferredGap(ComponentPlacement.UNRELATED)
 														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-																.addComponent(textField, 149, 149, Short.MAX_VALUE)
-																.addComponent(textField_1, GroupLayout.DEFAULT_SIZE,
+																.addComponent(campoUsuario, 149, 149, Short.MAX_VALUE)
+																.addComponent(campoNome, GroupLayout.DEFAULT_SIZE,
 																		149, Short.MAX_VALUE)))
 												.addGroup(groupLayout.createSequentialGroup().addGap(199)
 														.addComponent(lblCadastro)))
 										.addGroup(groupLayout.createSequentialGroup().addGap(123)
 												.addComponent(lblNewLabel_2)
 												.addPreferredGap(ComponentPlacement.UNRELATED)
-												.addComponent(passwordField_1, 149, 149, 149))))
+												.addComponent(campoSenha, 149, 149, 149))))
 						.addGap(175))
 				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup().addGap(210).addComponent(btnNewButton)
 						.addContainerGap(209, Short.MAX_VALUE)));
@@ -89,22 +134,22 @@ public class TelaCadastro extends JPanel {
 				.createSequentialGroup().addGap(22)
 				.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup().addComponent(lblCadastro).addGap(84).addComponent(
-								textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								campoNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE))
 						.addComponent(lblNewLabel))
 				.addGap(30)
 				.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_1))
 				.addGap(30)
 				.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						.addComponent(campoSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_2))
 				.addGap(28)
 				.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						.addComponent(campoConfirmarSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_3))
 				.addPreferredGap(ComponentPlacement.RELATED, 96, Short.MAX_VALUE).addComponent(btnNewButton)
