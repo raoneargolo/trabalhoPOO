@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class Validacao {
 	
-	//public static String caminho = "C:\\usuarios.txt";
 	private static File arquivoUsuarios;
 	
 	public static boolean ValidacaoUsuarioSenha(String usuarioLogon, String senhaLogon) {
