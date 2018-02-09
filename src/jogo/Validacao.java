@@ -75,7 +75,6 @@ public class Validacao {
 				String usuarioArquivo = usuarioSenhaArquivo[0];
 			
 				if (usuario.equals(usuarioArquivo)) {
-					System.out.println("Achei usuario no arquivo");
 					usuarioJaEncontrado = true;
 				}
 			}
