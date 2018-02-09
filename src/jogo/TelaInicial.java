@@ -14,8 +14,17 @@ public class TelaInicial extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TelaInicial(JFrame frame) { 
-		JLabel lblNewLabel = new JLabel("XXXX");
+	public TelaInicial(JFrame frame) {
+		String usuario;
+		
+		if(TelaLogon.usuario == null)
+		{
+			usuario = TelaCadastro.usuario;
+		} else {
+			usuario = TelaLogon.usuario;
+		}
+		
+		JLabel lblNewLabel = new JLabel(usuario);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
 		JLabel lblNewLabel_1 = new JLabel(", bem vindo");
