@@ -54,11 +54,8 @@ public class TelaLogon extends JFrame {
 		JMenu mnIncio = new JMenu("In\u00EDcio");
 		menuBar.add(mnIncio);
 
-		JMenuItem mntmSair = new JMenuItem("Painel 1");
+		JMenuItem mntmSair = new JMenuItem("Sair");
 		mnIncio.add(mntmSair);
-
-		JMenuItem mntmNewMenuItem = new JMenuItem("Painel 2");
-		mnIncio.add(mntmNewMenuItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -98,6 +95,20 @@ public class TelaLogon extends JFrame {
 		});
 
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				boolean validacao = true;
+				if(validacao == true) {
+					TelaInicial ti = new TelaInicial(frame);
+					contentPane.setVisible(false);
+					ti.setVisible(true);
+					setContentPane(ti);
+					ti.setRequestFocusEnabled(true);
+				} else {
+					//
+				}
+			}
+		});
 
 		JLabel lblLogo = new JLabel("Logo");
 		lblLogo.setFont(new Font("Tahoma", Font.PLAIN, 40));
