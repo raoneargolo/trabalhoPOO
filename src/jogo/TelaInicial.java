@@ -11,13 +11,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class TelaInicial extends JPanel {
-
 	/**
 	 * Create the panel.
 	 */
-	public TelaInicial(JFrame frame) {
-		
-		JLabel lblNewLabel = new JLabel("XXXXXX");
+	public TelaInicial(JFrame frame) { 
+		JLabel lblNewLabel = new JLabel("XXXX");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
 		JLabel lblNewLabel_1 = new JLabel(", bem vindo");
