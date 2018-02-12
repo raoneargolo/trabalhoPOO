@@ -108,6 +108,7 @@ public class JogoDaVelha {
 					button1.setBackground(Color.RED);
 					if(checkMatriz(1,0)) {
 						JOptionPane.showMessageDialog(null, "Vermelho Venceu!");
+						frame.dispose();
 					}
 					flag=false;
 				}
@@ -116,6 +117,7 @@ public class JogoDaVelha {
 					button1.setBackground(Color.BLUE);
 					if(checkMatriz(1,1)) {
 						JOptionPane.showMessageDialog(null, "Azul Venceu!");
+						frame.dispose();
 					}
 					flag=true;
 				}
@@ -134,6 +136,7 @@ public class JogoDaVelha {
 					button2.setBackground(Color.RED);
 					if(checkMatriz(2,0)) {
 						JOptionPane.showMessageDialog(null, "Vermelho Venceu!");
+						frame.dispose();
 					}
 					flag=false;
 				}
@@ -142,6 +145,7 @@ public class JogoDaVelha {
 					button2.setBackground(Color.BLUE);
 					if(checkMatriz(2,1)) {
 						JOptionPane.showMessageDialog(null, "Azul Venceu!");
+						frame.dispose();
 					}
 					flag=true;
 				}
@@ -159,6 +163,7 @@ public class JogoDaVelha {
 					button3.setBackground(Color.RED);
 					if(checkMatriz(3,0)) {
 						JOptionPane.showMessageDialog(null, "Vermelho Venceu!");
+						frame.dispose();
 					}
 					flag=false;
 				}
@@ -167,6 +172,7 @@ public class JogoDaVelha {
 					button3.setBackground(Color.BLUE);
 					if(checkMatriz(3,1)) {
 						JOptionPane.showMessageDialog(null, "Azul Venceu!");
+						frame.dispose();
 					}
 					flag=true;
 				}
@@ -184,6 +190,7 @@ public class JogoDaVelha {
 					button4.setBackground(Color.RED);
 					if(checkMatriz(4,0)) {
 						JOptionPane.showMessageDialog(null, "Vermelho Venceu!");
+						frame.dispose();
 					}
 					flag=false;
 				}
@@ -192,6 +199,7 @@ public class JogoDaVelha {
 					button4.setBackground(Color.BLUE);
 					if(checkMatriz(4,1)) {
 						JOptionPane.showMessageDialog(null, "Azul Venceu!");
+						frame.dispose();
 					}
 					flag=true;
 				}
@@ -209,6 +217,7 @@ public class JogoDaVelha {
 					button5.setBackground(Color.RED);
 					if(checkMatriz(5,0)) {
 						JOptionPane.showMessageDialog(null, "Vermelho Venceu!");
+						frame.dispose();
 					}
 					flag=false;
 				}
@@ -217,6 +226,7 @@ public class JogoDaVelha {
 					button5.setBackground(Color.BLUE);
 					if(checkMatriz(5,1)) {
 						JOptionPane.showMessageDialog(null, "Azul Venceu!");
+						frame.dispose();
 					}
 					flag=true;
 				}
@@ -234,6 +244,7 @@ public class JogoDaVelha {
 					button6.setBackground(Color.RED);
 					if(checkMatriz(6,0)) {
 						JOptionPane.showMessageDialog(null, "Vermelho Venceu!");
+						frame.dispose();
 					}
 					flag=false;
 				}
@@ -242,6 +253,7 @@ public class JogoDaVelha {
 					button6.setBackground(Color.BLUE);
 					if(checkMatriz(6,1)) {
 						JOptionPane.showMessageDialog(null, "Azul Venceu!");
+						frame.dispose();
 					}
 					flag=true;
 				}
@@ -259,6 +271,7 @@ public class JogoDaVelha {
 					button7.setBackground(Color.RED);
 					if(checkMatriz(7,0)) {
 						JOptionPane.showMessageDialog(null, "Vermelho Venceu!");
+						frame.dispose();
 					}
 					flag=false;
 				}
@@ -267,6 +280,7 @@ public class JogoDaVelha {
 					button7.setBackground(Color.BLUE);
 					if(checkMatriz(7,1)) {
 						JOptionPane.showMessageDialog(null, "Azul Venceu!");
+						frame.dispose();
 					}
 					flag=true;
 				}
@@ -284,6 +298,7 @@ public class JogoDaVelha {
 					button8.setBackground(Color.RED);
 					if(checkMatriz(8,0)) {
 						JOptionPane.showMessageDialog(null, "Vermelho Venceu!");
+						frame.dispose();
 					}
 					flag=false;
 				}
@@ -292,6 +307,7 @@ public class JogoDaVelha {
 					button8.setBackground(Color.BLUE);
 					if(checkMatriz(8,1)) {
 						JOptionPane.showMessageDialog(null, "Azul Venceu!");
+						frame.dispose();
 					}
 					flag=true;
 				}
@@ -309,6 +325,7 @@ public class JogoDaVelha {
 					button9.setBackground(Color.RED);
 					if(checkMatriz(9,0)) {
 						JOptionPane.showMessageDialog(null, "Vermelho Venceu!");
+						frame.dispose();
 					}
 					flag=false;
 				}
@@ -317,6 +334,7 @@ public class JogoDaVelha {
 					button9.setBackground(Color.BLUE);
 					if(checkMatriz(9,1)) {
 						JOptionPane.showMessageDialog(null, "Azul Venceu!");
+						frame.dispose();
 					}
 					flag=true;
 				}
