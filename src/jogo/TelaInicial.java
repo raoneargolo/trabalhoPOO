@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Map;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
@@ -42,7 +43,7 @@ public class TelaInicial extends JPanel {
 	 * Create the panel.
 	 */
 	
-	public TelaInicial(JFrame frame) {
+	public TelaInicial(JFrame frame, Map<String, String> mapaUsuarios, Jogador objJogador) {
 		String usuario;
 		
 		if(TelaLogon.usuario == null)
@@ -62,7 +63,7 @@ public class TelaInicial extends JPanel {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaCadastro tC = new TelaCadastro(frame);
+				TelaCadastro tC = new TelaCadastro(frame, mapaUsuarios);
 				frame.setContentPane(tC);
 			}
 		});
@@ -97,63 +98,83 @@ public class TelaInicial extends JPanel {
 		lblResultados.setFont(lblJogos.getFont().deriveFont(lblJogos.getFont().getStyle() | Font.BOLD));
 		
 		Oponente1 = new JTextField();
+		Oponente1.setEditable(false);
 		Oponente1.setColumns(10);
 		
 		Oponente2 = new JTextField();
+		Oponente2.setEditable(false);
 		Oponente2.setColumns(10);
 		
 		Oponente3 = new JTextField();
+		Oponente3.setEditable(false);
 		Oponente3.setColumns(10);
 		
 		Oponente4 = new JTextField();
+		Oponente4.setEditable(false);
 		Oponente4.setColumns(10);
 		
 		Oponente5 = new JTextField();
+		Oponente5.setEditable(false);
 		Oponente5.setColumns(10);
 		
 		Oponente6 = new JTextField();
+		Oponente6.setEditable(false);
 		Oponente6.setColumns(10);
 		
 		Oponente7 = new JTextField();
+		Oponente7.setEditable(false);
 		Oponente7.setColumns(10);
 		
 		Oponente8 = new JTextField();
+		Oponente8.setEditable(false);
 		Oponente8.setColumns(10);
 		
 		Oponente10 = new JTextField();
+		Oponente10.setEditable(false);
 		Oponente10.setColumns(10);
 		
 		Oponente9 = new JTextField();
+		Oponente9.setEditable(false);
 		Oponente9.setColumns(10);
 		
 		resultado1 = new JTextField();
+		resultado1.setEditable(false);
 		resultado1.setColumns(10);
 		
 		resultado2 = new JTextField();
+		resultado2.setEditable(false);
 		resultado2.setColumns(10);
 		
 		resultado3 = new JTextField();
+		resultado3.setEditable(false);
 		resultado3.setColumns(10);
 		
 		resultado4 = new JTextField();
+		resultado4.setEditable(false);
 		resultado4.setColumns(10);
 		
 		resultado5 = new JTextField();
+		resultado5.setEditable(false);
 		resultado5.setColumns(10);
 		
 		resultado6 = new JTextField();
+		resultado6.setEditable(false);
 		resultado6.setColumns(10);
 		
 		resultado7 = new JTextField();
+		resultado7.setEditable(false);
 		resultado7.setColumns(10);
 		
 		resultado8 = new JTextField();
+		resultado8.setEditable(false);
 		resultado8.setColumns(10);
 		
 		resultado9 = new JTextField();
+		resultado9.setEditable(false);
 		resultado9.setColumns(10);
 		
 		resultado10 = new JTextField();
+		resultado10.setEditable(false);
 		resultado10.setColumns(10);
 		
 		lblVitoria = new JLabel("Vit\u00F3ria");
@@ -164,12 +185,32 @@ public class TelaInicial extends JPanel {
 		
 		Vitoria = new JTextField();
 		Vitoria.setColumns(10);
+		Vitoria.setEditable(false);
+		Vitoria.setText(Long.toString(objJogador.getQuantidadeVitorias()));
 		
+		
+		//objJogador.exibirHistorico()
 		Empate = new JTextField();
 		Empate.setColumns(10);
+		Empate.setText(Long.toString(objJogador.getQuantidadeEmpates()));
+		Empate.setEditable(false);
 		
 		Derrota = new JTextField();
 		Derrota.setColumns(10);
+		Derrota.setText(Long.toString(objJogador.getQuantidadeDerrotas()));
+		Derrota.setEditable(false);
+		
+		JButton btnIniciarpartida = new JButton("IniciarPartida");
+		btnIniciarpartida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JogoDaVelha JV = new JogoDaVelha(objJogador); // instancia panel
+				frame.setVisible(false); // deixa conteudo do panel atual desabilitado
+				//JV.setVisible(true); // deixa panel que eu quero habilitado
+				//setContentPane(JV); // insiro no panel do frame o panel que eu quero
+				//tc.setRequestFocusEnabled(true); // foca no panel que eu quero
+			}
+		});
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -223,109 +264,106 @@ public class TelaInicial extends JPanel {
 								.addComponent(resultado10, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
 								.addComponent(resultado2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
 								.addComponent(resultado4, 0, 0, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+							.addGap(42)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(lblDerrota)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(Derrota, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE))
-										.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-											.addComponent(Vitoria, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-											.addComponent(lblVitoria, Alignment.LEADING))
-										.addComponent(Empate, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE))
-									.addGap(30))
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-									.addComponent(lblEmpate)
-									.addGap(71))))
+								.addComponent(lblVitoria)
+								.addComponent(lblEmpate)
+								.addComponent(lblDerrota))
+							.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(Vitoria, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+								.addComponent(Empate, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+								.addComponent(Derrota, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE))
+							.addGap(72))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addComponent(lblResultados)
 								.addComponent(lblNewLabel_1))
-							.addContainerGap(191, Short.MAX_VALUE))))
+							.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+							.addComponent(btnIniciarpartida)
+							.addGap(56))))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(211)
 					.addComponent(btnVoltar)
-					.addContainerGap(256, Short.MAX_VALUE))
+					.addContainerGap(328, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(45)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel)
-						.addComponent(lblNewLabel_1))
-					.addGap(35)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblOponente)
-						.addComponent(lblJogos)
-						.addComponent(lblResultados))
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(45)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNewLabel)
+								.addComponent(lblNewLabel_1))
+							.addGap(35)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblOponente)
+								.addComponent(lblJogos)
+								.addComponent(lblResultados))
+							.addPreferredGap(ComponentPlacement.RELATED))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnIniciarpartida)
+							.addGap(45)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(3)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(Oponente9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(23)
 									.addComponent(Oponente1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(Oponente2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(Oponente3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(Oponente4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(Oponente5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(Oponente6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(Oponente7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(Oponente8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addComponent(Oponente9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+											.addComponent(lblEmpate)
+											.addComponent(Empate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(Oponente3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(Oponente4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(Oponente5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(Oponente6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(Oponente7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(Oponente8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(Oponente10, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(30)
 							.addComponent(btnVoltar))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(resultado2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(resultado2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblVitoria)
+								.addComponent(Vitoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addGap(1)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(resultado10, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblVitoria))
+							.addComponent(resultado10, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(resultado9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(Vitoria))
+							.addComponent(resultado9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(resultado8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblEmpate))
+							.addComponent(resultado8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(resultado7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(resultado6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addComponent(Empate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(resultado5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblDerrota))
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(resultado4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(resultado3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(resultado1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(22)
-									.addComponent(Derrota, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-							.addGap(58))
+							.addComponent(resultado7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(resultado6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(resultado5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblDerrota)
+								.addComponent(Derrota, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(resultado4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(resultado3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(resultado1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
@@ -347,9 +385,8 @@ public class TelaInicial extends JPanel {
 									.addComponent(lblJogo_9))
 								.addComponent(lblJogo_1))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblJogo_10)
-							.addGap(68)))
-					.addGap(17))
+							.addComponent(lblJogo_10)))
+					.addGap(28))
 		);
 		setLayout(groupLayout);
 
