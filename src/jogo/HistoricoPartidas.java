@@ -73,7 +73,7 @@ public class HistoricoPartidas {
                 arquivoJogador.createNewFile();
             }
 
-            FileWriter escrever = new FileWriter(arquivoJogador.getName(), true);
+            FileWriter escrever = new FileWriter(arquivoJogador.getName(), false);
             BufferedWriter bw = new BufferedWriter(escrever);
 
             bw.write("" + vitorias);
@@ -97,7 +97,7 @@ public class HistoricoPartidas {
                 adversario = buff[0];
                 resultado = buff[1];
                 mapaHistorico.put(adversario, resultado);
-                //System.out.println("Adversário: "+adversario+"\nResultado: "+resultado);
+                //System.out.println("Adversï¿½rio: "+adversario+"\nResultado: "+resultado);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(HistoricoPartidas.class.getName()).log(Level.SEVERE, null, ex);
@@ -112,7 +112,7 @@ public class HistoricoPartidas {
                 arquivoJogador.createNewFile();
             }
 
-            FileWriter escrever = new FileWriter(arquivoJogador.getName(), true);
+            FileWriter escrever = new FileWriter(arquivoJogador.getName(), false);
             BufferedWriter bw = new BufferedWriter(escrever);
 
             for (Map.Entry<String, String> mapabuffer : mapaHistorico.entrySet()) {
