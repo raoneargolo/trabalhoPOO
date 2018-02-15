@@ -17,6 +17,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 import java.awt.event.ActionEvent;
 
 public class TelaLogon extends JFrame {
@@ -30,11 +32,16 @@ public class TelaLogon extends JFrame {
 	private JTextField campoUsuario;
 	private static TelaLogon frame;
 	static String usuario;
-	private static String senha;
+	static String senha;
+	static Map<String, String> mapaUsuarios = new HashMap<String, String>();
+
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		LerUsuario objLerUsuario = new LerUsuario();
+		mapaUsuarios = objLerUsuario.lerUsuarios();
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				frame = new TelaLogon();
@@ -77,8 +84,10 @@ public class TelaLogon extends JFrame {
 		JButton btnEntrarComoConvidade = new JButton("Entrar como convidado");
 		btnEntrarComoConvidade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				usuario = "Visitante";
-				TelaInicial ti = new TelaInicial(frame);
+				TratamentoDeUsuarios obj = new TratamentoDeUsuarios();
+				usuario = obj.gerarVisitante(mapaUsuarios);
+				Jogador objJogador = new Jogador(usuario, usuario);
+				TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador);
 				contentPane.setVisible(false);
 				ti.setVisible(true);
 				setContentPane(ti);
@@ -90,7 +99,7 @@ public class TelaLogon extends JFrame {
 		btnNovoJogador.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				TelaCadastro tc = new TelaCadastro(frame); // instancia panel
+				TelaCadastro tc = new TelaCadastro(frame, mapaUsuarios); // instancia panel
 				contentPane.setVisible(false); // deixa conteudo do panel atual desabilitado
 				tc.setVisible(true); // deixa panel que eu quero habilitado
 				setContentPane(tc); // insiro no panel do frame o panel que eu quero
@@ -103,14 +112,18 @@ public class TelaLogon extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				usuario = campoUsuario.getText();
-				senha = campoSenha.getText();
+				senha = String.valueOf(campoSenha.getPassword());
+				//senha = campoSenha.getPassword();
 				
-				boolean validacao = false;
+				int validacao;
+				TratamentoDeUsuarios obj = new TratamentoDeUsuarios();
+				//boolean validacao = true;
 				
-				validacao = Validacao.ValidacaoUsuarioSenha(usuario,senha);
+				validacao=obj.verificarLogin(usuario, senha, mapaUsuarios);
 				
-				if(validacao == true) {
-					TelaInicial ti = new TelaInicial(frame);
+				if(validacao == 1) {
+					Jogador objJogador = new Jogador(usuario, senha);
+					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador);
 					contentPane.setVisible(false);
 					ti.setVisible(true);
 					setContentPane(ti);
@@ -119,6 +132,7 @@ public class TelaLogon extends JFrame {
 					JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos! Por favor tente novamente");
 					campoUsuario.setText("");
 					campoSenha.setText("");
+					usuario=null;					
 				}
 			}
 		});
