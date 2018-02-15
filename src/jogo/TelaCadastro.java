@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.util.Map;
 import java.awt.event.ActionEvent;
 
 public class TelaCadastro extends JPanel {
@@ -26,8 +27,8 @@ public class TelaCadastro extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TelaCadastro(final JFrame frame) { //em todo cabeçalho de panel, chama o frame
-
+	public TelaCadastro(final JFrame frame, Map<String, String>mapaUsuarios) { //em todo cabeçalho de panel, chama o frame
+		
 		JLabel lblNewLabel = new JLabel("Nome");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
@@ -46,20 +47,22 @@ public class TelaCadastro extends JPanel {
 				
 				nome = campoNome.getText();
 				usuario = campoUsuario.getText();
-				senha = campoSenha.getText();
-				confirmarSenha = campoConfirmarSenha.getText();
+				senha = String.valueOf(campoSenha.getPassword());
+				confirmarSenha = String.valueOf(campoConfirmarSenha.getPassword());
 				
-				boolean senhasIguais = Validacao.SenhaIgualConfirmarSenha(senha, confirmarSenha);
-				boolean usuarioNovo = Validacao.ValidacaoUsuarioCadastro(usuario);
+				TratamentoDeUsuarios objLerUsuarios = new TratamentoDeUsuarios();
+				boolean senhasIguais = objLerUsuarios.SenhaIgualConfirmarSenha(senha, confirmarSenha);
+				boolean usuarioNovo = objLerUsuarios.ValidacaoUsuarioCadastro(usuario, mapaUsuarios);
 				
 				if(usuarioNovo == true && senhasIguais == true) { //Novo usuário disponível e senhas conferem (iguais)
 					
-					Validacao.CadastrarUsuario(usuario, senha);
+					//Validacao.CadastrarUsuario(usuario, senha);
+					objLerUsuarios.cadastrarJogador(usuario, confirmarSenha, mapaUsuarios);
 					
 					JOptionPane.showMessageDialog(null, "Usuário cadastrado!");
-					
+					Jogador objJogador = new Jogador(usuario, senha);
 					setVisible(false); //setar o panel como falso
-					TelaInicial ti = new TelaInicial(frame); //crio objeto do proximo panel
+					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador); //crio objeto do proximo panel
 					frame.setContentPane(ti); //colocar no frame o proximo panel
 				}
 				
