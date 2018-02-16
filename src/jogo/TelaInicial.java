@@ -63,8 +63,8 @@ public class TelaInicial extends JPanel {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaCadastro tC = new TelaCadastro(frame, mapaUsuarios);
-				frame.setContentPane(tC);
+				TelaLogon tL = new TelaLogon();
+				frame.setContentPane(tL);
 			}
 		});
 		
@@ -263,37 +263,39 @@ public class TelaInicial extends JPanel {
 								.addComponent(resultado9, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
 								.addComponent(resultado10, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
 								.addComponent(resultado2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-								.addComponent(resultado4, 0, 0, Short.MAX_VALUE))
-							.addGap(42)
+								.addComponent(resultado4, 0, 0, Short.MAX_VALUE)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(lblResultados)
+								.addComponent(lblNewLabel_1))))
+					.addGap(35)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblVitoria)
 								.addComponent(lblEmpate)
 								.addComponent(lblDerrota))
-							.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(Vitoria, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
 								.addComponent(Empate, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
 								.addComponent(Derrota, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE))
 							.addGap(72))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(lblResultados)
-								.addComponent(lblNewLabel_1))
-							.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
 							.addComponent(btnIniciarpartida)
-							.addGap(56))))
+							.addContainerGap())))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(211)
 					.addComponent(btnVoltar)
-					.addContainerGap(328, Short.MAX_VALUE))
+					.addContainerGap(295, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(45)
+					.addContainerGap(45, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblNewLabel)
 								.addComponent(lblNewLabel_1))
@@ -304,9 +306,8 @@ public class TelaInicial extends JPanel {
 								.addComponent(lblResultados))
 							.addPreferredGap(ComponentPlacement.RELATED))
 						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(btnIniciarpartida)
-							.addGap(45)))
+							.addGap(44)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(3)
