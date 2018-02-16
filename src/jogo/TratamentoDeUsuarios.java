@@ -83,6 +83,6 @@ public class TratamentoDeUsuarios {
 
 	public String gerarVisitante(Map<String, String> mapa) {
 		verificarLogin("guest", "guest", mapa);
-		return "Visitante";
+		return "guest";
 	}
 }
