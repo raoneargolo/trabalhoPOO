@@ -9,9 +9,10 @@ import java.net.UnknownHostException;
 import java.util.Map;
 
 public class Cliente /* implements Runnable */ {
-
+	
+	static TelaLogon frame;
+	
 	public static void main(String args[]) throws UnknownHostException, IOException, ClassNotFoundException {
-		TelaLogon frame;
 		Socket cliente = new Socket("127.0.0.1", 12346);
 
 		//LerUsuario objLerUsuario = new LerUsuario();

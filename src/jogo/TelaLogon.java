@@ -32,7 +32,7 @@ public class TelaLogon extends JFrame {
 	static JPanel contentPane;
 	private JPasswordField campoSenha;
 	private JTextField campoUsuario;
-	private static TelaLogon frame;
+	//private static TelaLogon frame;
 	static String usuario;
 	static String senha;
 	static Map<String, String> mapaUsuarios = new HashMap<String, String>();
@@ -46,12 +46,12 @@ public class TelaLogon extends JFrame {
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				frame = new TelaLogon();
+				frame = new TelaLogon(mapaUsuarios, null);
 				frame.setVisible(true);
 			}
 		});
-	}*/
-
+	}
+*/
 	/**
 	 * Create the frame.
 	 */
@@ -90,7 +90,7 @@ public class TelaLogon extends JFrame {
 				TratamentoDeUsuarios obj = new TratamentoDeUsuarios();
 				usuario = obj.gerarVisitante(mapaUsuarios);
 				Jogador objJogador = new Jogador(usuario, usuario);
-				TelaInicial ti = new TelaInicial(frame, mapaUsuarios,objJogador);
+				TelaInicial ti = new TelaInicial(Cliente.frame, mapaUsuarios,objJogador);
 //				TelaInicial ti = new TelaInicial(mapaUsuarios,objJogador);
 				contentPane.setVisible(false);
 				ti.setVisible(true);
@@ -103,7 +103,7 @@ public class TelaLogon extends JFrame {
 		btnNovoJogador.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				TelaCadastro tc = new TelaCadastro(frame, mapaUsuarios, outToServer); // instancia panel
+				TelaCadastro tc = new TelaCadastro(Cliente.frame, mapaUsuarios, outToServer); // instancia panel
 				contentPane.setVisible(false); // deixa conteudo do panel atual desabilitado
 				tc.setVisible(true); // deixa panel que eu quero habilitado
 				setContentPane(tc); // insiro no panel do frame o panel que eu quero
@@ -127,7 +127,7 @@ public class TelaLogon extends JFrame {
 				
 				if(validacao == 1) {
 					Jogador objJogador = new Jogador(usuario, senha);
-					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador);
+					TelaInicial ti = new TelaInicial(Cliente.frame, mapaUsuarios, objJogador);
 //					TelaInicial ti = new TelaInicial(mapaUsuarios, objJogador);
 					contentPane.setVisible(false);
 					ti.setVisible(true);
