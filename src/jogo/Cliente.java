@@ -23,7 +23,6 @@ public class Cliente /* implements Runnable */ {
 		mapaUsuarios=(Map<String, String>)inFromServer.readObject();
 		frame = new TelaLogon(mapaUsuarios, outToServer);
 		frame.setVisible(true);
-		cliente.close();
 	}
 }
 
