@@ -14,12 +14,15 @@ public class Cliente /* implements Runnable */ {
 	
 	public static void main(String args[]) throws UnknownHostException, IOException, ClassNotFoundException {
 		Socket cliente = new Socket("127.0.0.1", 12346);
-
+		ObjectInputStream inFromServer;
 		//LerUsuario objLerUsuario = new LerUsuario();
 		Map<String, String> mapaUsuarios; /*= objLerUsuario.lerUsuarios();*/
 		
-		ObjectInputStream inFromServer = new ObjectInputStream(cliente.getInputStream());
+		inFromServer = new ObjectInputStream(cliente.getInputStream());
 		mapaUsuarios=(Map<String, String>)inFromServer.readObject();
+		
+		inFromServer.skip(inFromServer.available());
+		
 		frame = new TelaLogon(mapaUsuarios, cliente);
 		frame.setVisible(true);
 	}
