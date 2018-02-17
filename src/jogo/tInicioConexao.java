@@ -42,6 +42,7 @@ public class tInicioConexao implements Runnable {
 				System.out.println(buffer[0]+":"+buffer[1]);
 				new TratamentoDeUsuarios().cadastroEmArquivo(buffer[0], buffer[1]);
 			}
+			s.close();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

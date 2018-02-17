@@ -18,8 +18,6 @@ public class Cliente /* implements Runnable */ {
 		//LerUsuario objLerUsuario = new LerUsuario();
 		Map<String, String> mapaUsuarios; /*= objLerUsuario.lerUsuarios();*/
 		
-		ObjectOutputStream outToServer = new ObjectOutputStream(cliente.getOutputStream());
-		
 		ObjectInputStream inFromServer = new ObjectInputStream(cliente.getInputStream());
 		mapaUsuarios=(Map<String, String>)inFromServer.readObject();
 		frame = new TelaLogon(mapaUsuarios, cliente);
