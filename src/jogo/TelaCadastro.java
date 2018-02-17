@@ -12,9 +12,12 @@ import javax.swing.JFrame;
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Map;
+import java.util.Scanner;
 import java.awt.event.ActionEvent;
 
 public class TelaCadastro extends JPanel {
@@ -63,12 +66,22 @@ public class TelaCadastro extends JPanel {
 					
 					JOptionPane.showMessageDialog(null, "Usuário cadastrado!");
 					Jogador objJogador = new Jogador(usuario, senha);
+					
+					System.out.println(usuario + "     "+senha);
+					Scanner entrada = new Scanner(usuario+":"+senha);
+					//System.out.println(entrada.nextLine());
+			        try {
+						PrintStream saida = new PrintStream(cliente.getOutputStream());
+						saida.println(entrada.nextLine());
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					entrada.close();
+					
 					setVisible(false); //setar o panel como falso
 					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador); //crio objeto do proximo panel
-//					TelaInicial ti = new TelaInicial(mapaUsuarios,objJogador);
-//					ti.setVisible(true);
 					frame.setContentPane(ti); //colocar no frame o proximo panel
-//					ti.setRequestFocusEnabled(true);
 				}
 				
 				if(usuarioNovo == true && senhasIguais == false) { //Usuário disponível e senhas não conferem (diferentes)
