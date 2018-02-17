@@ -67,17 +67,8 @@ public class TelaCadastro extends JPanel {
 					JOptionPane.showMessageDialog(null, "Usuário cadastrado!");
 					Jogador objJogador = new Jogador(usuario, senha);
 					
-					System.out.println(usuario + "     "+senha);
-					Scanner entrada = new Scanner(usuario+":"+senha);
-					//System.out.println(entrada.nextLine());
-			        try {
-						PrintStream saida = new PrintStream(cliente.getOutputStream());
-						saida.println(entrada.nextLine());
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					entrada.close();
+					String entrada = "cada"+usuario+":"+senha;
+					new tEscritaGeral().enviarParaServidor(cliente, entrada);	
 					
 					setVisible(false); //setar o panel como falso
 					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador); //crio objeto do proximo panel
