@@ -149,8 +149,8 @@ public class TelaLogon extends JFrame {
 			}
 		});
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("F:\\eclise-workspace\\Trabalho de POO\\imagem\\Jogo da velha.jpg"));
+		JLabel lblNewLabel = new JLabel("INSERIR IMAGEM");
+		//lblNewLabel.setIcon(new ImageIcon("F:\\eclise-workspace\\Trabalho de POO\\imagem\\Jogo da velha.jpg"));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
