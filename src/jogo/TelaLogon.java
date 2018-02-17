@@ -29,7 +29,7 @@ public class TelaLogon extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	static JPanel contentPane;
 	private JPasswordField campoSenha;
 	private JTextField campoUsuario;
 	private static TelaLogon frame;
@@ -90,7 +90,8 @@ public class TelaLogon extends JFrame {
 				TratamentoDeUsuarios obj = new TratamentoDeUsuarios();
 				usuario = obj.gerarVisitante(mapaUsuarios);
 				Jogador objJogador = new Jogador(usuario, usuario);
-				TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador, outToServer);
+				TelaInicial ti = new TelaInicial(frame, mapaUsuarios,objJogador);
+//				TelaInicial ti = new TelaInicial(mapaUsuarios,objJogador);
 				contentPane.setVisible(false);
 				ti.setVisible(true);
 				setContentPane(ti);
@@ -126,7 +127,8 @@ public class TelaLogon extends JFrame {
 				
 				if(validacao == 1) {
 					Jogador objJogador = new Jogador(usuario, senha);
-					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador, outToServer);
+					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador);
+//					TelaInicial ti = new TelaInicial(mapaUsuarios, objJogador);
 					contentPane.setVisible(false);
 					ti.setVisible(true);
 					setContentPane(ti);

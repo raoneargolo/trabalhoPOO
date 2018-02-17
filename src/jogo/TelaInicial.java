@@ -44,6 +44,7 @@ public class TelaInicial extends JPanel {
 	 */
 	
 	public TelaInicial(JFrame frame, Map<String, String> mapaUsuarios, Jogador objJogador) {
+//	public TelaInicial(Map<String,String> mapaUsuarios, Jogador objJogador) {
 		String usuario;
 		
 		if(TelaLogon.usuario == null)
@@ -63,8 +64,8 @@ public class TelaInicial extends JPanel {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaLogon tL = new TelaLogon();
-				frame.setContentPane(tL);
+				TelaLogon tL = new TelaLogon(mapaUsuarios, null);
+//				contentPane.setContentPane(tL);
 			}
 		});
 		
@@ -203,11 +204,11 @@ public class TelaInicial extends JPanel {
 		JButton btnIniciarpartida = new JButton("IniciarPartida");
 		btnIniciarpartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JogoDaVelha JV = new JogoDaVelha(objJogador); // instancia panel
-				frame.setVisible(false); // deixa conteudo do panel atual desabilitado
-				//JV.setVisible(true); // deixa panel que eu quero habilitado
-				//setContentPane(JV); // insiro no panel do frame o panel que eu quero
-				//tc.setRequestFocusEnabled(true); // foca no panel que eu quero
+//				JogoDaVelha JV = new JogoDaVelha(objJogador); // instancia panel
+//				frame.setVisible(false); // deixa conteudo do panel atual desabilitado
+//				//JV.setVisible(true); // deixa panel que eu quero habilitado
+//				//setContentPane(JV); // insiro no panel do frame o panel que eu quero
+//				//tc.setRequestFocusEnabled(true); // foca no panel que eu quero
 			}
 		});
 		

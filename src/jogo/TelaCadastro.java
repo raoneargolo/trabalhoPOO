@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.io.ObjectOutputStream;
 import java.util.Map;
 import java.awt.event.ActionEvent;
 
@@ -27,7 +28,7 @@ public class TelaCadastro extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TelaCadastro(final JFrame frame, Map<String, String>mapaUsuarios) { //em todo cabeçalho de panel, chama o frame
+	public TelaCadastro(final JFrame frame, Map<String, String>mapaUsuarios, ObjectOutputStream outToServer) { //em todo cabeçalho de panel, chama o frame
 		
 		JLabel lblNewLabel = new JLabel("Nome");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -63,7 +64,10 @@ public class TelaCadastro extends JPanel {
 					Jogador objJogador = new Jogador(usuario, senha);
 					setVisible(false); //setar o panel como falso
 					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador); //crio objeto do proximo panel
+//					TelaInicial ti = new TelaInicial(mapaUsuarios,objJogador);
+//					ti.setVisible(true);
 					frame.setContentPane(ti); //colocar no frame o proximo panel
+//					ti.setRequestFocusEnabled(true);
 				}
 				
 				if(usuarioNovo == true && senhasIguais == false) { //Usuário disponível e senhas não conferem (diferentes)
