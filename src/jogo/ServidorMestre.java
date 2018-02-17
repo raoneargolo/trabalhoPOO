@@ -32,7 +32,7 @@ public class ServidorMestre {
 
             // inicia a thread
             threadInicio.start();
-            
+           /* 
           //cria um objeto que vai tratar cadastro de arquivo
             tRecebeCadastro tCad = new tRecebeCadastro(cliente, lu.lerUsuarios());
         	
@@ -40,7 +40,7 @@ public class ServidorMestre {
             Thread threadCadastro = new Thread(tCad);
 
             // inicia a thread
-            threadCadastro.start();
+            threadCadastro.start();*/
         }
         
         //servidor.close();
