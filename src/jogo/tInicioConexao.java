@@ -12,10 +12,10 @@ public class tInicioConexao implements Runnable {
 	Map<String, String> mapaU;
 	String inputFromClient;
 	String buffer[];
-	
+
 	public tInicioConexao(Socket cliente, Map<String, String> mapaU) throws IOException {
-		this.cliente=cliente;
-		this.mapaU=mapaU;		
+		this.cliente = cliente;
+		this.mapaU = mapaU;
 	}
 
 	@Override
@@ -24,26 +24,40 @@ public class tInicioConexao implements Runnable {
 		try {
 			ObjectOutputStream outToClient = new ObjectOutputStream(cliente.getOutputStream());
 			outToClient.flush();
-			//ObjectInputStream inFromClient = new ObjectInputStream(cliente.getInputStream());
+			// ObjectInputStream inFromClient = new
+			// ObjectInputStream(cliente.getInputStream());
 			outToClient.writeObject(mapaU);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		/*try {
-			//ObjectOutputStream outToClient = new ObjectOutputStream(cliente.getOutputStream());
-			ObjectInputStream inFromClient = new ObjectInputStream(cliente.getInputStream());
-				inputFromClient=(String)inFromClient.readObject();
+
+		Scanner s;
+		try {
+			s = new Scanner(cliente.getInputStream());
+			while (s.hasNextLine()) {
+				inputFromClient=s.nextLine();
+				System.out.println(inputFromClient);
 				buffer=inputFromClient.split(":");
+				System.out.println(buffer[0]+":"+buffer[1]);
 				new TratamentoDeUsuarios().cadastroEmArquivo(buffer[0], buffer[1]);
-		} catch (IOException e) {
+			}
+		} catch (IOException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
+			e1.printStackTrace();
+		}
+
+		/*
+		 * try { //ObjectOutputStream outToClient = new
+		 * ObjectOutputStream(cliente.getOutputStream()); ObjectInputStream inFromClient
+		 * = new ObjectInputStream(cliente.getInputStream());
+		 * inputFromClient=(String)inFromClient.readObject();
+		 * buffer=inputFromClient.split(":"); new
+		 * TratamentoDeUsuarios().cadastroEmArquivo(buffer[0], buffer[1]); } catch
+		 * (IOException e) { // TODO Auto-generated catch block e.printStackTrace(); }
+		 * catch (ClassNotFoundException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 */
+
 	}
 }
