@@ -56,7 +56,8 @@ public class TelaLogon extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaLogon(Map<String, String> mapaU, ObjectOutputStream outToServer) {
+	public TelaLogon(Map<String, String> mapaU, Socket cliente) {
+	//public TelaLogon(Map<String, String> mapaU, ObjectOutputStream outToServer) {
 		setResizable(false);
 		mapaUsuarios=mapaU;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -110,7 +111,8 @@ public class TelaLogon extends JFrame {
 		btnNovoJogador.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				TelaCadastro tc = new TelaCadastro(Cliente.frame, mapaUsuarios, outToServer); // instancia panel
+				//TelaCadastro tc = new TelaCadastro(Cliente.frame, mapaUsuarios, outToServer); // instancia panel
+				TelaCadastro tc = new TelaCadastro(Cliente.frame, mapaUsuarios, cliente); // instancia panel
 				contentPane.setVisible(false); // deixa conteudo do panel atual desabilitado
 				tc.setVisible(true); // deixa panel que eu quero habilitado
 				setContentPane(tc); // insiro no panel do frame o panel que eu quero

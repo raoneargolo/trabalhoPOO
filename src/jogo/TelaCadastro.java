@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.Map;
 import java.awt.event.ActionEvent;
 
@@ -28,7 +29,7 @@ public class TelaCadastro extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TelaCadastro(final JFrame frame, Map<String, String>mapaUsuarios, ObjectOutputStream outToServer) { //em todo cabeçalho de panel, chama o frame
+	public TelaCadastro(final JFrame frame, Map<String, String>mapaUsuarios, Socket cliente) { //em todo cabeçalho de panel, chama o frame
 		
 		JLabel lblNewLabel = new JLabel("Nome");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));

@@ -22,7 +22,7 @@ public class Cliente /* implements Runnable */ {
 		
 		ObjectInputStream inFromServer = new ObjectInputStream(cliente.getInputStream());
 		mapaUsuarios=(Map<String, String>)inFromServer.readObject();
-		frame = new TelaLogon(mapaUsuarios, outToServer);
+		frame = new TelaLogon(mapaUsuarios, cliente);
 		frame.setVisible(true);
 	}
 }
