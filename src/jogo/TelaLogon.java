@@ -17,6 +17,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 import java.awt.event.ActionEvent;
@@ -38,7 +40,7 @@ public class TelaLogon extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		LerUsuario objLerUsuario = new LerUsuario();
 		mapaUsuarios = objLerUsuario.lerUsuarios();
 		
@@ -48,14 +50,15 @@ public class TelaLogon extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaLogon() {
+	public TelaLogon(Map<String, String> mapaU, ObjectOutputStream outToServer) {
+		mapaUsuarios=mapaU;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 500);
+		setBounds(100, 100, 700, 700);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -87,7 +90,7 @@ public class TelaLogon extends JFrame {
 				TratamentoDeUsuarios obj = new TratamentoDeUsuarios();
 				usuario = obj.gerarVisitante(mapaUsuarios);
 				Jogador objJogador = new Jogador(usuario, usuario);
-				TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador);
+				TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador, outToServer);
 				contentPane.setVisible(false);
 				ti.setVisible(true);
 				setContentPane(ti);
@@ -99,7 +102,7 @@ public class TelaLogon extends JFrame {
 		btnNovoJogador.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				TelaCadastro tc = new TelaCadastro(frame, mapaUsuarios); // instancia panel
+				TelaCadastro tc = new TelaCadastro(frame, mapaUsuarios, outToServer); // instancia panel
 				contentPane.setVisible(false); // deixa conteudo do panel atual desabilitado
 				tc.setVisible(true); // deixa panel que eu quero habilitado
 				setContentPane(tc); // insiro no panel do frame o panel que eu quero
@@ -123,7 +126,7 @@ public class TelaLogon extends JFrame {
 				
 				if(validacao == 1) {
 					Jogador objJogador = new Jogador(usuario, senha);
-					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador);
+					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador, outToServer);
 					contentPane.setVisible(false);
 					ti.setVisible(true);
 					setContentPane(ti);
