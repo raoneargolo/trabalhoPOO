@@ -22,6 +22,7 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class TelaLogon extends JFrame {
 
@@ -56,9 +57,10 @@ public class TelaLogon extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaLogon(Map<String, String> mapaU, ObjectOutputStream outToServer) {
+		setResizable(false);
 		mapaUsuarios=mapaU;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 700);
+		setBounds(100, 100, 600	, 600);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -67,6 +69,11 @@ public class TelaLogon extends JFrame {
 		menuBar.add(mnIncio);
 
 		JMenuItem mntmSair = new JMenuItem("Sair");
+		mntmSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
 		mnIncio.add(mntmSair);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -141,49 +148,66 @@ public class TelaLogon extends JFrame {
 				}
 			}
 		});
-
-		JLabel lblLogo = new JLabel("Logo");
-		lblLogo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("F:\\eclise-workspace\\Trabalho de POO\\imagem\\Jogo da velha.jpg"));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane
-				.createSequentialGroup().addContainerGap(93, Short.MAX_VALUE)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-								.createParallelGroup(
-										Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-												.addComponent(lblSenha).addComponent(lblUsurio))
-										.addGap(18)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, 154,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(campoSenha, 154, 154, 154))
-										.addGap(155))
-								.addGroup(Alignment.TRAILING,
-										gl_contentPane.createSequentialGroup().addComponent(lblLogo).addGap(189)))
-								.addGroup(Alignment.TRAILING,
-										gl_contentPane.createSequentialGroup().addComponent(btnEntrar).addGap(200)))
-						.addGroup(Alignment.TRAILING,
-								gl_contentPane.createSequentialGroup().addComponent(btnEntrarComoConvidade)
-										.addContainerGap()))
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(259)
+					.addComponent(btnEntrar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(362))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(149)
+							.addComponent(lblSenha)
+							.addPreferredGap(ComponentPlacement.UNRELATED))
 						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-								.addComponent(btnNovoJogador).addContainerGap()))));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(lblLogo)
-						.addPreferredGap(ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblUsurio))
-						.addGap(30)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(campoSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblSenha))
-						.addGap(51).addComponent(btnEntrar).addGap(67).addComponent(btnNovoJogador)
-						.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnEntrarComoConvidade).addGap(7)));
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(lblUsurio)
+							.addGap(21)))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(campoUsuario)
+						.addComponent(campoSenha, GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+					.addGap(164))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(83)
+					.addComponent(lblNewLabel)
+					.addContainerGap(173, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(396, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(btnEntrarComoConvidade)
+						.addComponent(btnNovoJogador))
+					.addGap(145))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(21)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 264, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+							.addComponent(lblUsurio)
+							.addGap(13))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(34)
+							.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblSenha)
+						.addComponent(campoSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(btnEntrar, GroupLayout.PREFERRED_SIZE, 39, Short.MAX_VALUE)
+					.addGap(34)
+					.addComponent(btnNovoJogador, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnEntrarComoConvidade)
+					.addGap(23))
+		);
 		contentPane.setLayout(gl_contentPane);
 	}
 }
