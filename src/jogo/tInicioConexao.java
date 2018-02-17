@@ -36,11 +36,18 @@ public class tInicioConexao implements Runnable {
 		try {
 			s = new Scanner(cliente.getInputStream());
 			while (s.hasNextLine()) {
+								
 				inputFromClient=s.nextLine();
-				System.out.println(inputFromClient);
-				buffer=inputFromClient.split(":");
-				System.out.println(buffer[0]+":"+buffer[1]);
-				new TratamentoDeUsuarios().cadastroEmArquivo(buffer[0], buffer[1]);
+				
+				if(inputFromClient.startsWith("cada")) {
+					//TODO - CRIAR SUBSTRING PARA ENVIO PRO SERVIDOR
+					System.out.println(inputFromClient);
+					buffer=inputFromClient.split(":");
+					System.out.println(buffer[0]+":"+buffer[1]);
+					new TratamentoDeUsuarios().cadastroEmArquivo(buffer[0], buffer[1]);
+				}else if(inputFromClient.startsWith("arqu")) {
+					
+				}
 			}
 			s.close();
 		} catch (IOException e1) {
