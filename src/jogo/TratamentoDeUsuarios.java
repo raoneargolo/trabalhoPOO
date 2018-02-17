@@ -68,6 +68,11 @@ public class TratamentoDeUsuarios {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		cadastroEmArquivo(usuario, senha);
+		return true;
+	}
+	
+	public void cadastroEmArquivo(String usuario, String senha) {
 		try {
 			dadosJogador = new File("usuarios");
 			FileWriter escrever = new FileWriter(dadosJogador.getName(), true);
@@ -78,7 +83,6 @@ public class TratamentoDeUsuarios {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return true;
 	}
 
 	public String gerarVisitante(Map<String, String> mapa) {
