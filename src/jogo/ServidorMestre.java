@@ -15,6 +15,8 @@ public class ServidorMestre {
         System.out.println("Porta 12345 aberta!");
         Socket cliente;
         
+        tIniciarPartida objIniciarPartida=new tIniciarPartida();
+        
         while(true) {
         	lu = new LerUsuario();
         	
@@ -23,24 +25,15 @@ public class ServidorMestre {
                 cliente.getInetAddress().getHostAddress()
             );
             
-            //mapa=lu.lerUsuarios();
         	//cria um objeto que vai tratar a conexão
-            tInicioConexao tIni = new tInicioConexao(cliente, lu.lerUsuarios());
+            tInicioConexao tIni = new tInicioConexao(cliente, lu.lerUsuarios(), objIniciarPartida);
         	
             // cria a thread em cima deste objeto
             Thread threadInicio = new Thread(tIni);
 
             // inicia a thread
             threadInicio.start();
-           /* 
-          //cria um objeto que vai tratar cadastro de arquivo
-            tRecebeCadastro tCad = new tRecebeCadastro(cliente, lu.lerUsuarios());
-        	
-            // cria a thread em cima deste objeto
-            Thread threadCadastro = new Thread(tCad);
 
-            // inicia a thread
-            threadCadastro.start();*/
         }
         
         //servidor.close();

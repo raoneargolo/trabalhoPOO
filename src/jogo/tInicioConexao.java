@@ -16,12 +16,14 @@ import java.util.Scanner;
 public class tInicioConexao implements Runnable {
 	Socket cliente;
 	Map<String, String> mapaU;
+	tIniciarPartida objIniciarPartida = null;
 	String inputFromClient;
 	String buffer[];
 
-	public tInicioConexao(Socket cliente, Map<String, String> mapaU) throws IOException {
+	public tInicioConexao(Socket cliente, Map<String, String> mapaU, tIniciarPartida objIniciarPartida) throws IOException {
 		this.cliente = cliente;
 		this.mapaU = mapaU;
+		this.objIniciarPartida = objIniciarPartida;
 	}
 
 	@Override
@@ -96,11 +98,18 @@ public class tInicioConexao implements Runnable {
 			        //in.close();
 			        
 				}else if(inputFromClient.startsWith("inic")) {
+					Jogador objJogador;
+										
+					ObjectInputStream inFromCliente = new ObjectInputStream(cliente.getInputStream());
+					objJogador = (Jogador)inFromCliente.readObject();
 					
+					if(objIniciarPartida.iniciarPartida(cliente, objJogador).equals("comecou")) {
+						
+					}
 				}
 			}
 			s.close();
-		} catch (IOException e1) {
+		} catch (IOException | ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
