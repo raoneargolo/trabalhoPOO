@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -148,6 +149,14 @@ public class TelaLogon extends JFrame {
 				validacao=obj.verificarLogin(usuario, senha, mapaUsuarios);
 				
 				if(validacao == 1) {
+		        	File file = new File("Numeros2"+usuario);
+		        	if(file.exists()) {
+		        		file.delete();
+		        	}
+		        	file = new File("Historico2"+usuario);
+		        	if(file.exists()) {
+		        		file.delete();
+		        	}
 					new tEscritaGeral().enviarParaServidor(cliente, "arqu"+usuario);
 					
 					InputStream inFromServer = null;
@@ -163,19 +172,21 @@ public class TelaLogon extends JFrame {
 
 			        try {
 			            out = new FileOutputStream("Numeros2"+usuario);
+			            
 			        } catch (FileNotFoundException ex) {
 			            System.out.println("File not found. ");
 			        }
 
 			        bytes = new byte[16*1024];
-
+			        
 			        try {
 						while ((count = inFromServer.read(bytes)) > 0) {
 						    out.write(bytes, 0, count);
-						    //System.out.println("to aqui");
+						    System.out.println("to aqui");
 						    break;
 						}
-						//System.out.println("sai daqui");
+						out.flush();
+						System.out.println("sai daqui");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -208,10 +219,11 @@ public class TelaLogon extends JFrame {
 			        try {
 						while ((count = inFromServer.read(bytes)) > 0) {
 						    out.write(bytes, 0, count);
-						    //System.out.println("to aqui");
+						    System.out.println("to acolá");
 						    break;
 						}
-						//System.out.println("sai daqui");
+						out.flush();
+						System.out.println("sai dacolá");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
