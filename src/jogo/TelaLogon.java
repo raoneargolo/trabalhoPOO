@@ -240,18 +240,13 @@ public class TelaLogon extends JFrame {
 				}
 			}
 		});
-		
-		JLabel imagemLogo = new JLabel("");
 		Image img = new ImageIcon(this.getClass().getResource("/JogoDaVelha.jpg")).getImage();
-		imagemLogo.setIcon(new ImageIcon(img));
-		imagemLogo.setBounds(83, 11, 428, 302);
 		contentPane.setLayout(null);
 		contentPane.add(btnEntrar);
 		contentPane.add(lblSenha);
 		contentPane.add(lblUsurio);
 		contentPane.add(campoUsuario);
 		contentPane.add(campoSenha);
-		contentPane.add(imagemLogo);
 		contentPane.add(btnEntrarComoConvidade);
 		contentPane.add(btnNovoJogador);
 	}
