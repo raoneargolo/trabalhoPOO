@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -86,18 +87,23 @@ public class TelaLogon extends JFrame {
 		setContentPane(contentPane);
 
 		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setBounds(154, 355, 43, 20);
 		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
 		campoSenha = new JPasswordField();
+		campoSenha.setBounds(209, 357, 175, 20);
 		
 		
 		JLabel lblUsurio = new JLabel("Usu\u00E1rio");
+		lblUsurio.setBounds(143, 324, 54, 20);
 		lblUsurio.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
 		campoUsuario = new JTextField();
+		campoUsuario.setBounds(209, 324, 175, 20);
 		campoUsuario.setColumns(10);
 		
 		JButton btnEntrarComoConvidade = new JButton("Entrar como convidado");
+		btnEntrarComoConvidade.setBounds(441, 499, 143, 23);
 		btnEntrarComoConvidade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TratamentoDeUsuarios obj = new TratamentoDeUsuarios();
@@ -113,6 +119,7 @@ public class TelaLogon extends JFrame {
 		});
 
 		JButton btnNovoJogador = new JButton("Novo jogador");
+		btnNovoJogador.setBounds(487, 465, 97, 25);
 		btnNovoJogador.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -126,6 +133,7 @@ public class TelaLogon extends JFrame {
 		});
 
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.setBounds(265, 395, 63, 25);
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -233,65 +241,18 @@ public class TelaLogon extends JFrame {
 			}
 		});
 		
-		JLabel lblNewLabel = new JLabel("INSERIR IMAGEM");
-		//lblNewLabel.setIcon(new ImageIcon("F:\\eclise-workspace\\Trabalho de POO\\imagem\\Jogo da velha.jpg"));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(259)
-					.addComponent(btnEntrar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(362))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(149)
-							.addComponent(lblSenha)
-							.addPreferredGap(ComponentPlacement.UNRELATED))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(lblUsurio)
-							.addGap(21)))
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(campoUsuario)
-						.addComponent(campoSenha, GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
-					.addGap(164))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(83)
-					.addComponent(lblNewLabel)
-					.addContainerGap(173, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(396, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnEntrarComoConvidade)
-						.addComponent(btnNovoJogador))
-					.addGap(145))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(21)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 264, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-							.addComponent(lblUsurio)
-							.addGap(13))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(34)
-							.addComponent(campoUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblSenha)
-						.addComponent(campoSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addComponent(btnEntrar, GroupLayout.PREFERRED_SIZE, 39, Short.MAX_VALUE)
-					.addGap(34)
-					.addComponent(btnNovoJogador, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnEntrarComoConvidade)
-					.addGap(23))
-		);
-		contentPane.setLayout(gl_contentPane);
+		JLabel imagemLogo = new JLabel("");
+		Image img = new ImageIcon(this.getClass().getResource("/JogoDaVelha.jpg")).getImage();
+		imagemLogo.setIcon(new ImageIcon(img));
+		imagemLogo.setBounds(83, 11, 428, 302);
+		contentPane.setLayout(null);
+		contentPane.add(btnEntrar);
+		contentPane.add(lblSenha);
+		contentPane.add(lblUsurio);
+		contentPane.add(campoUsuario);
+		contentPane.add(campoSenha);
+		contentPane.add(imagemLogo);
+		contentPane.add(btnEntrarComoConvidade);
+		contentPane.add(btnNovoJogador);
 	}
 }
