@@ -105,7 +105,7 @@ public class TelaLogon extends JFrame {
 		campoUsuario.setColumns(10);
 		
 		JButton btnEntrarComoConvidade = new JButton("Entrar como convidado");
-		btnEntrarComoConvidade.setBounds(430, 504, 143, 23);
+		btnEntrarComoConvidade.setBounds(398, 504, 175, 23);
 		btnEntrarComoConvidade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TratamentoDeUsuarios obj = new TratamentoDeUsuarios();
@@ -121,7 +121,7 @@ public class TelaLogon extends JFrame {
 		});
 
 		JButton btnNovoJogador = new JButton("Novo jogador");
-		btnNovoJogador.setBounds(476, 464, 97, 25);
+		btnNovoJogador.setBounds(416, 468, 143, 25);
 		btnNovoJogador.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -135,7 +135,7 @@ public class TelaLogon extends JFrame {
 		});
 
 		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(265, 304, 63, 25);
+		btnEntrar.setBounds(248, 304, 97, 25);
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
