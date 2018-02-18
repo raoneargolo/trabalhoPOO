@@ -144,8 +144,9 @@ public class TelaLogon extends JFrame {
 					
 					InputStream inFromServer = null;
 			        OutputStream out = null;
-
-
+			        byte[] bytes;
+			        int count;
+			        
 			        try {
 			            inFromServer =cliente.getInputStream();
 			        } catch (IOException ex) {
@@ -158,9 +159,44 @@ public class TelaLogon extends JFrame {
 			            System.out.println("File not found. ");
 			        }
 
-			        byte[] bytes = new byte[4096];
+			        bytes = new byte[4096];
 
-			        int count;
+			        try {
+						while ((count = inFromServer.read(bytes)) > 0) {
+						    out.write(bytes, 0, count);
+						    //System.out.println("to aqui");
+						    break;
+						}
+						//System.out.println("sai daqui");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+			        //try {
+						//out.close();
+						//inFromServer.close();
+					//} catch (IOException e) {
+						// TODO Auto-generated catch block
+						//e.printStackTrace();
+					//}
+			        
+			        //___________________segundo arquivo_______________________________
+			        
+			        try {
+			            inFromServer =cliente.getInputStream();
+			        } catch (IOException ex) {
+			            System.out.println("Can't get socket input stream. ");
+			        }
+
+			        try {
+			            out = new FileOutputStream("Historico2"+usuario);
+			        } catch (FileNotFoundException ex) {
+			            System.out.println("File not found. ");
+			        }
+
+			        bytes = new byte[4096];
+			        
 			        try {
 						while ((count = inFromServer.read(bytes)) > 0) {
 						    out.write(bytes, 0, count);
@@ -172,13 +208,13 @@ public class TelaLogon extends JFrame {
 						e.printStackTrace();
 					}
 
-			        try {
+			        /*try {
 						out.close();
 						inFromServer.close();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
+					}*/
 					
 					Jogador objJogador = new Jogador(usuario, senha);
 					TelaInicial ti = new TelaInicial(Cliente.frame, mapaUsuarios, objJogador);

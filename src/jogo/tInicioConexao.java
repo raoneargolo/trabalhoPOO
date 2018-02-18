@@ -58,25 +58,42 @@ public class tInicioConexao implements Runnable {
 				}else if(inputFromClient.startsWith("arqu")) {
 					subString=inputFromClient.substring(4);
 					File arquivo;
+										
+					byte[] bytes;
+					InputStream in;
+					OutputStream outToClient;
+					int count;
 					
 					arquivo = new File("Numeros"+subString);
-					byte[] bytes = new byte[4096];
+					bytes = new byte[4096];
 					
-					InputStream in = new FileInputStream(arquivo);
-					OutputStream outToClient;
+					in= new FileInputStream(arquivo);
+					outToClient=cliente.getOutputStream();
+					
+			        while ((count = in.read(bytes)) > 0) {
+			            outToClient.write(bytes, 0, count);
+			            //System.out.println("to ali");
+			        }
+			        //outToClient.close();
+			        //in.close();
+			        //System.out.println("sai dali");
+			        
+			        //_______________________segundo arquivo___________________________________
+			        
+			        arquivo = new File("Historico"+subString);
+					bytes = new byte[4096];
+					
+					in = new FileInputStream(arquivo);
+					//OutputStream outToClient2;
 					outToClient=cliente.getOutputStream();
 
-					int count;
 			        while ((count = in.read(bytes)) > 0) {
 			            outToClient.write(bytes, 0, count);
 			            //System.out.println("to ali");
 			        }
 			        outToClient.close();
 			        in.close();
-			        //System.out.println("sai dali");
 			        
-			        //in.close();
-			        //outToClient.close();			        
 				}
 			}
 			s.close();
