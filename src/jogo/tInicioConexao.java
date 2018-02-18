@@ -100,7 +100,7 @@ public class tInicioConexao implements Runnable {
 			        //in.close();
 			        
 				}else if(inputFromClient.startsWith("inic")) {
-					Jogador objJogador;
+					/*Jogador objJogador;
 										
 					ObjectInputStream inFromCliente = new ObjectInputStream(cliente.getInputStream());
 					objJogador = (Jogador)inFromCliente.readObject();
@@ -112,13 +112,14 @@ public class tInicioConexao implements Runnable {
 						objJogoDaVelha.Receberjogadores(objIniciarPartida.getObjJogador1(), objIniciarPartida.getObjJogador2());
 					}
 					
-					
-					
+					ObjectOutputStream outToClient = new ObjectOutputStream(cliente.getOutputStream());
+					outToClient.writeObject(objJogoDaVelha);
+					*/
 					
 				}
 			}
 			s.close();
-		} catch (IOException | ClassNotFoundException e1) {
+		} catch (IOException/* | ClassNotFoundException*/ e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}

@@ -38,7 +38,7 @@ public class JogoDaVelha {
 		else {
 			whoseTurn=false;
 		}
-		initialize();
+		//initialize();
 	}
 	
 	public void Receberjogadores(Jogador jogador1, Jogador jogador2) {
