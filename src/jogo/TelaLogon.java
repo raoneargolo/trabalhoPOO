@@ -158,13 +158,15 @@ public class TelaLogon extends JFrame {
 			            System.out.println("File not found. ");
 			        }
 
-			        byte[] bytes = new byte[16*1024];
+			        byte[] bytes = new byte[4096];
 
 			        int count;
 			        try {
 						while ((count = inFromServer.read(bytes)) > 0) {
 						    out.write(bytes, 0, count);
+						    //System.out.println("to aqui");
 						}
+						//System.out.println("sai daqui");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

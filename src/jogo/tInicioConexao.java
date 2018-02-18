@@ -33,7 +33,7 @@ public class tInicioConexao implements Runnable {
 			// ObjectInputStream(cliente.getInputStream());
 			outToClient.writeObject(mapaU);
 			outToClient.flush();
-			outToClient.close();
+			//outToClient.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,7 +60,7 @@ public class tInicioConexao implements Runnable {
 					File arquivo;
 					
 					arquivo = new File("Numeros"+subString);
-					byte[] bytes = new byte[16*1024];
+					byte[] bytes = new byte[4096];
 					
 					InputStream in = new FileInputStream(arquivo);
 					OutputStream outToClient;
@@ -69,10 +69,14 @@ public class tInicioConexao implements Runnable {
 					int count;
 			        while ((count = in.read(bytes)) > 0) {
 			            outToClient.write(bytes, 0, count);
+			            //System.out.println("to ali");
 			        }
-			        
+			        outToClient.close();
 			        in.close();
-			        outToClient.close();			        
+			        //System.out.println("sai dali");
+			        
+			        //in.close();
+			        //outToClient.close();			        
 				}
 			}
 			s.close();
