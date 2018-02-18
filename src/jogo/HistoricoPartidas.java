@@ -93,6 +93,9 @@ public class HistoricoPartidas {
             fromFile = new Scanner(new File(Hist + jogador));
             while (fromFile.hasNextLine()) {
                 linha = fromFile.nextLine();
+                if(linha.equals("comeco")) {
+                	continue;
+                }
                 String buff[] = linha.split(":");
                 adversario = buff[0];
                 resultado = buff[1];
@@ -114,20 +117,13 @@ public class HistoricoPartidas {
 
             FileWriter escrever = new FileWriter(arquivoJogador.getName(), false);
             BufferedWriter bw = new BufferedWriter(escrever);
-
+            
+            bw.write("comeco");
             for (Map.Entry<String, String> mapabuffer : mapaHistorico.entrySet()) {
-                if (primeiro) {
-                    primeiro = false;
-                    bw.write("" + mapabuffer.getKey());
-                    bw.write(":");
-                    bw.write(mapabuffer.getValue());
-                } else {
                     bw.write("\n" + mapabuffer.getKey());
                     bw.write(":");
                     bw.write(mapabuffer.getValue());
-                }
             }
-            primeiro = true;
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();

@@ -45,6 +45,11 @@ public class TratamentoDeUsuarios {
 			arquivoJogador = new File("Historico" + usuario);
 			if (!arquivoJogador.exists()) {
 				arquivoJogador.createNewFile();
+				FileWriter escrever = new FileWriter(arquivoJogador.getName(), false);
+				BufferedWriter bw = new BufferedWriter(escrever);
+
+				bw.write("comeco");
+				bw.close();
 			}
 
 		} catch (IOException e) {
