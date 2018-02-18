@@ -15,6 +15,7 @@ import java.net.Socket;
 import java.util.Map;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class TelaInicial extends JPanel {
 	private JTextField Oponente1;
@@ -58,137 +59,195 @@ public class TelaInicial extends JPanel {
 			usuario = TelaLogon.usuario;
 		}
 		
-		JLabel lblNewLabel = new JLabel(usuario);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		JLabel nomeJogador = new JLabel(usuario);
+		nomeJogador.setBounds(127, 34, 280, 49);
+		nomeJogador.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		
-		JLabel lblNewLabel_1 = new JLabel(", bem vindo");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		JLabel textoBemVindo = new JLabel("Bem vindo,");
+		textoBemVindo.setBounds(26, 54, 105, 25);
+		textoBemVindo.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
-		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				TelaLogon tL = new TelaLogon(mapaUsuarios, null);
-//				contentPane.setContentPane(tL);
-			}
-		});
+		JLabel lblJogos = new JLabel("Jogo");
+		lblJogos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJogos.setBounds(26, 142, 49, 20);
+		lblJogos.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
-		JLabel lblJogos = new JLabel("Jogos");
-		lblJogos.setFont(lblJogos.getFont().deriveFont(lblJogos.getFont().getStyle() | Font.BOLD));
+		JLabel lblJogo_1 = new JLabel("1");
+		lblJogo_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJogo_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblJogo_1.setBounds(26, 170, 49, 14);
 		
-		JLabel lblJogo_1 = new JLabel("Jogo 1");
+		JLabel lblJogo_2 = new JLabel("2");
+		lblJogo_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJogo_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblJogo_2.setBounds(26, 193, 49, 14);
 		
-		JLabel lblJogo_2 = new JLabel("Jogo 2");
+		JLabel lblJogo_3 = new JLabel("3");
+		lblJogo_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJogo_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblJogo_3.setBounds(26, 219, 49, 14);
 		
-		JLabel lblJogo_3 = new JLabel("Jogo 3");
+		JLabel lblJogo_4 = new JLabel("4");
+		lblJogo_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJogo_4.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblJogo_4.setBounds(26, 245, 49, 14);
 		
-		JLabel lblJogo_4 = new JLabel("Jogo 4");
+		JLabel lblJogo_5 = new JLabel("5");
+		lblJogo_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJogo_5.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblJogo_5.setBounds(26, 271, 49, 14);
 		
-		JLabel lblJogo_5 = new JLabel("Jogo 5");
+		JLabel lblJogo_6 = new JLabel("6");
+		lblJogo_6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJogo_6.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblJogo_6.setBounds(26, 297, 49, 14);
 		
-		JLabel lblJogo_6 = new JLabel("Jogo 6");
+		JLabel lblJogo_7 = new JLabel("7");
+		lblJogo_7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJogo_7.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblJogo_7.setBounds(26, 323, 49, 14);
 		
-		JLabel lblJogo_7 = new JLabel("Jogo 7");
+		JLabel lblJogo_8 = new JLabel("8");
+		lblJogo_8.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJogo_8.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblJogo_8.setBounds(26, 349, 49, 14);
 		
-		JLabel lblJogo_8 = new JLabel("Jogo 8");
+		JLabel lblJogo_9 = new JLabel("9");
+		lblJogo_9.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJogo_9.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblJogo_9.setBounds(26, 376, 49, 14);
 		
-		JLabel lblJogo_9 = new JLabel("Jogo 9");
-		
-		JLabel lblJogo_10 = new JLabel("Jogo 10");
+		JLabel lblJogo_10 = new JLabel("10");
+		lblJogo_10.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJogo_10.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblJogo_10.setBounds(26, 401, 50, 14);
 		
 		JLabel lblOponente = new JLabel("Oponente");
-		lblOponente.setFont(lblJogos.getFont().deriveFont(lblJogos.getFont().getStyle() | Font.BOLD));
+		lblOponente.setBounds(114, 144, 86, 17);
+		lblOponente.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
-		JLabel lblResultados = new JLabel("Resultados");
-		lblResultados.setFont(lblJogos.getFont().deriveFont(lblJogos.getFont().getStyle() | Font.BOLD));
+		JLabel lblResultados = new JLabel("Resultado");
+		lblResultados.setBounds(243, 145, 86, 14);
+		lblResultados.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
 		Oponente1 = new JTextField();
+		Oponente1.setBounds(110, 194, 90, 20);
 		Oponente1.setEditable(false);
 		Oponente1.setColumns(10);
 		
 		Oponente2 = new JTextField();
+		Oponente2.setBounds(110, 220, 90, 20);
 		Oponente2.setEditable(false);
 		Oponente2.setColumns(10);
 		
 		Oponente3 = new JTextField();
+		Oponente3.setBounds(110, 246, 90, 20);
 		Oponente3.setEditable(false);
 		Oponente3.setColumns(10);
 		
 		Oponente4 = new JTextField();
+		Oponente4.setBounds(110, 272, 90, 20);
 		Oponente4.setEditable(false);
 		Oponente4.setColumns(10);
 		
 		Oponente5 = new JTextField();
+		Oponente5.setBounds(110, 298, 90, 20);
 		Oponente5.setEditable(false);
 		Oponente5.setColumns(10);
 		
 		Oponente6 = new JTextField();
+		Oponente6.setBounds(110, 324, 90, 20);
 		Oponente6.setEditable(false);
 		Oponente6.setColumns(10);
 		
 		Oponente7 = new JTextField();
+		Oponente7.setBounds(110, 350, 90, 20);
 		Oponente7.setEditable(false);
 		Oponente7.setColumns(10);
 		
 		Oponente8 = new JTextField();
+		Oponente8.setBounds(110, 376, 90, 20);
 		Oponente8.setEditable(false);
 		Oponente8.setColumns(10);
 		
 		Oponente10 = new JTextField();
+		Oponente10.setBounds(110, 402, 90, 20);
 		Oponente10.setEditable(false);
 		Oponente10.setColumns(10);
 		
 		Oponente9 = new JTextField();
+		Oponente9.setBounds(110, 168, 90, 20);
 		Oponente9.setEditable(false);
 		Oponente9.setColumns(10);
 		
 		resultado1 = new JTextField();
+		resultado1.setBounds(266, 402, 30, 20);
 		resultado1.setEditable(false);
 		resultado1.setColumns(10);
 		
 		resultado2 = new JTextField();
+		resultado2.setBounds(266, 376, 30, 20);
 		resultado2.setEditable(false);
 		resultado2.setColumns(10);
 		
 		resultado3 = new JTextField();
+		resultado3.setBounds(266, 350, 30, 20);
 		resultado3.setEditable(false);
 		resultado3.setColumns(10);
 		
 		resultado4 = new JTextField();
+		resultado4.setBounds(266, 324, 30, 20);
 		resultado4.setEditable(false);
 		resultado4.setColumns(10);
 		
 		resultado5 = new JTextField();
+		resultado5.setBounds(266, 298, 30, 20);
 		resultado5.setEditable(false);
 		resultado5.setColumns(10);
 		
 		resultado6 = new JTextField();
+		resultado6.setBounds(266, 272, 30, 20);
 		resultado6.setEditable(false);
 		resultado6.setColumns(10);
 		
 		resultado7 = new JTextField();
+		resultado7.setBounds(266, 246, 30, 20);
 		resultado7.setEditable(false);
 		resultado7.setColumns(10);
 		
 		resultado8 = new JTextField();
+		resultado8.setBounds(266, 220, 30, 20);
 		resultado8.setEditable(false);
 		resultado8.setColumns(10);
 		
 		resultado9 = new JTextField();
+		resultado9.setBounds(266, 194, 30, 20);
 		resultado9.setEditable(false);
 		resultado9.setColumns(10);
 		
 		resultado10 = new JTextField();
+		resultado10.setBounds(266, 168, 30, 20);
 		resultado10.setEditable(false);
 		resultado10.setColumns(10);
 		
-		lblVitoria = new JLabel("Vit\u00F3ria");
+		lblVitoria = new JLabel("Vit\u00F3rias");
+		lblVitoria.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblVitoria.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblVitoria.setBounds(370, 170, 61, 14);
 		
-		lblEmpate = new JLabel("Empate");
+		lblEmpate = new JLabel("Empates");
+		lblEmpate.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblEmpate.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEmpate.setBounds(370, 222, 61, 14);
 		
-		lblDerrota = new JLabel("Derrota");
+		lblDerrota = new JLabel("Derrotas");
+		lblDerrota.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblDerrota.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblDerrota.setBounds(370, 248, 61, 14);
 		
 		Vitoria = new JTextField();
+		Vitoria.setHorizontalAlignment(SwingConstants.CENTER);
+		Vitoria.setBounds(441, 168, 20, 20);
 		Vitoria.setColumns(10);
 		Vitoria.setEditable(false);
 		Vitoria.setText(Long.toString(objJogador.getQuantidadeVitorias()));
@@ -196,16 +255,21 @@ public class TelaInicial extends JPanel {
 		
 		//objJogador.exibirHistorico()
 		Empate = new JTextField();
+		Empate.setHorizontalAlignment(SwingConstants.CENTER);
+		Empate.setBounds(441, 219, 20, 20);
 		Empate.setColumns(10);
 		Empate.setText(Long.toString(objJogador.getQuantidadeEmpates()));
 		Empate.setEditable(false);
 		
 		Derrota = new JTextField();
+		Derrota.setHorizontalAlignment(SwingConstants.CENTER);
+		Derrota.setBounds(441, 246, 20, 20);
 		Derrota.setColumns(10);
 		Derrota.setText(Long.toString(objJogador.getQuantidadeDerrotas()));
 		Derrota.setEditable(false);
 		
-		JButton btnIniciarpartida = new JButton("IniciarPartida");
+		JButton btnIniciarpartida = new JButton("Iniciar partida");
+		btnIniciarpartida.setBounds(186, 453, 127, 23);
 		btnIniciarpartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				/*new tEscritaGeral().enviarParaServidor(cliente, "inic");
@@ -231,189 +295,49 @@ public class TelaInicial extends JPanel {
 //				//tc.setRequestFocusEnabled(true); // foca no panel que eu quero
 			}
 		});
-		
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 213, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(7)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-											.addComponent(lblJogo_9)
-											.addComponent(lblJogo_8)
-											.addComponent(lblJogo_7)
-											.addComponent(lblJogo_6)
-											.addComponent(lblJogo_5)
-											.addComponent(lblJogo_4)
-											.addComponent(lblJogo_3)
-											.addComponent(lblJogo_2)
-											.addComponent(lblJogo_1)
-											.addComponent(lblJogos))
-										.addComponent(lblJogo_10))
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(Oponente1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(Oponente9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(Oponente8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(Oponente7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(Oponente6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(Oponente5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(Oponente4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(Oponente3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(Oponente2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(Oponente10, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(140)
-							.addComponent(lblOponente)))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(55)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(resultado1, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-								.addComponent(resultado3, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-								.addComponent(resultado5, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-								.addComponent(resultado6, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-								.addComponent(resultado7, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-								.addComponent(resultado8, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-									.addComponent(resultado10, 0, 0, Short.MAX_VALUE)
-									.addGap(28))
-								.addComponent(resultado4, 0, 0, Short.MAX_VALUE)
-								.addComponent(resultado9, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-								.addComponent(resultado2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(lblResultados)
-								.addComponent(lblNewLabel_1))))
-					.addGap(35)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblVitoria)
-								.addComponent(lblEmpate)
-								.addComponent(lblDerrota))
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(Vitoria, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-								.addComponent(Empate, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-								.addComponent(Derrota, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE))
-							.addGap(72))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnIniciarpartida)
-							.addContainerGap())))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(211)
-					.addComponent(btnVoltar)
-					.addContainerGap(295, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(61, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblNewLabel)
-								.addComponent(lblNewLabel_1))
-							.addGap(35)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblOponente)
-								.addComponent(lblJogos)
-								.addComponent(lblResultados))
-							.addPreferredGap(ComponentPlacement.RELATED))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnIniciarpartida)
-							.addGap(44)))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-									.addComponent(Oponente9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addComponent(resultado2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(23)
-									.addComponent(Oponente1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(Oponente2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-											.addComponent(lblEmpate)
-											.addComponent(Empate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(Oponente3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(Oponente4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(Oponente5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(Oponente6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(Oponente7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(Oponente8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(Oponente10, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(30)
-							.addComponent(btnVoltar))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblVitoria)
-								.addComponent(Vitoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(resultado10, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(3)
-							.addComponent(resultado9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(resultado8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(resultado7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(resultado6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(resultado5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblDerrota)
-								.addComponent(Derrota, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(resultado4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(resultado3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(resultado1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(23)
-									.addComponent(lblJogo_2)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblJogo_3)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblJogo_4)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblJogo_5)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblJogo_6)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblJogo_7)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblJogo_8)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblJogo_9))
-								.addComponent(lblJogo_1))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblJogo_10)))
-					.addGap(28))
-		);
-		setLayout(groupLayout);
+		setLayout(null);
+		add(nomeJogador);
+		add(lblJogo_9);
+		add(lblJogo_8);
+		add(lblJogo_7);
+		add(lblJogo_6);
+		add(lblJogo_5);
+		add(lblJogo_4);
+		add(lblJogo_3);
+		add(lblJogo_2);
+		add(lblJogo_1);
+		add(lblJogos);
+		add(lblJogo_10);
+		add(Oponente1);
+		add(Oponente9);
+		add(Oponente8);
+		add(Oponente7);
+		add(Oponente6);
+		add(Oponente5);
+		add(Oponente4);
+		add(Oponente3);
+		add(Oponente2);
+		add(Oponente10);
+		add(lblOponente);
+		add(resultado1);
+		add(resultado3);
+		add(resultado5);
+		add(resultado6);
+		add(resultado7);
+		add(resultado8);
+		add(resultado10);
+		add(resultado4);
+		add(resultado9);
+		add(resultado2);
+		add(lblResultados);
+		add(textoBemVindo);
+		add(lblVitoria);
+		add(lblEmpate);
+		add(lblDerrota);
+		add(Vitoria);
+		add(Empate);
+		add(Derrota);
+		add(btnIniciarpartida);
 
 	}
 }
