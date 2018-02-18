@@ -11,6 +11,7 @@ import java.awt.SystemColor;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
@@ -20,17 +21,31 @@ import java.awt.Font;
 @SuppressWarnings("unused")
 public class JogoDaVelha {
 	ControlaJogo controlador = new ControlaJogo();
-	public boolean flag = true;
+	Random rand = new Random();
+	int defineX = rand.nextInt(2);
+	public boolean flag=true,whoseTurn;
 	int[][] matriz= {{2,2,2},{2,2,2},{2,2,2},};
 	private JFrame frame;
 	private Jogador jogador1;
-	private String jogador2;
+	private Jogador jogador2;
 	
-	public JogoDaVelha(Jogador jogador1) {
-		this.jogador1=jogador1;
+	public JogoDaVelha(/*Jogador jogador1*/) {
+		//this.jogador1=jogador1;
 		//this.jogador2=jogador2;
+		if(defineX==0) {
+			whoseTurn=true;
+		}
+		else {
+			whoseTurn=false;
+		}
 		initialize();
 	}
+	
+	public void Receberjogadores(Jogador jogador1, Jogador jogador2) {
+		this.jogador1=jogador1;
+		this.jogador2=jogador2;
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -371,6 +386,6 @@ public class JogoDaVelha {
 		JLabel label_1 = new JLabel("");
 		label_1.setBounds(530, 154, 71, 14);
 		frame.getContentPane().add(label_1);
-		label_1.setText(jogador2);
+		label_1.setText(jogador2.getNomeUsuario());
 	}
 }
