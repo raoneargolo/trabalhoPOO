@@ -272,7 +272,7 @@ public class TelaInicial extends JPanel {
 		btnIniciarpartida.setBounds(186, 453, 127, 23);
 		btnIniciarpartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				/*new tEscritaGeral().enviarParaServidor(cliente, "inic");
+				new tEscritaGeral().enviarParaServidor(cliente, "inic");
 				
 				try {
 					ObjectOutputStream outToServer = new ObjectOutputStream(cliente.getOutputStream());
@@ -286,7 +286,7 @@ public class TelaInicial extends JPanel {
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
+				}
 				
 //				JogoDaVelha JV = new JogoDaVelha(objJogador); // instancia panel
 //				frame.setVisible(false); // deixa conteudo do panel atual desabilitado

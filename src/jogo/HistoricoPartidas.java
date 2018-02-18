@@ -5,13 +5,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class HistoricoPartidas {
+public class HistoricoPartidas implements Serializable{
 
     private final String Hist = "Historico";
     private final String Num = "Numeros";
@@ -24,7 +25,6 @@ public class HistoricoPartidas {
     private Map<String, String> mapaHistorico;
     private File arquivoJogador;
     private boolean primeiro;
-    Scanner fromFile;
 
     public HistoricoPartidas() {
         mapaHistorico = new HashMap<String, String>();
@@ -53,14 +53,14 @@ public class HistoricoPartidas {
 
     public void recuperarNumeros(String jogador) {
         try {
-            fromFile = new Scanner(new File(Num + jogador));
+            Scanner fromFile = new Scanner(new File(Num + jogador));
 
             linha = fromFile.nextLine();
             String buff[] = linha.split(":");
             vitorias = buff[0];
             empates = buff[1];
             derrotas = buff[2];
-
+            fromFile.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(HistoricoPartidas.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,7 +90,7 @@ public class HistoricoPartidas {
 
     public Map<String,String> recuperarHistorico(String jogador) {
         try {
-            fromFile = new Scanner(new File(Hist + jogador));
+            Scanner fromFile = new Scanner(new File(Hist + jogador));
             while (fromFile.hasNextLine()) {
                 linha = fromFile.nextLine();
                 if(linha.equals("comeco")) {

@@ -11,6 +11,7 @@ import java.awt.SystemColor;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.Serializable;
 import java.util.Random;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -19,7 +20,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 @SuppressWarnings("unused")
-public class JogoDaVelha {
+public class JogoDaVelha implements Serializable{
 	ControlaJogo controlador = new ControlaJogo();
 	Random rand = new Random();
 	int defineX = rand.nextInt(2);

@@ -1,9 +1,10 @@
 package jogo;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Jogador {
+public class Jogador implements Serializable{
     
     private String nomeUsuario;
     private String senhaJogador;

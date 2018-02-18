@@ -1,8 +1,9 @@
 package jogo;
 
 import javax.swing.JFrame;
+import java.io.Serializable;
 
-public class ControlaJogo {
+public class ControlaJogo implements Serializable{
 	int contadorJogadas=0;
 	public boolean checkMatriz(int matriz[][],int button, int valor) {
 		boolean resposta=false;

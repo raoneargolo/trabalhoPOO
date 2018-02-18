@@ -82,7 +82,7 @@ public class tInicioConexao implements Runnable {
 					}
 					outToClient.flush();
 					// outToClient.close();
-					 in.close();
+					in.close();
 					System.out.println("sai dali");
 
 					// _______________________segundo arquivo___________________________________
@@ -100,31 +100,31 @@ public class tInicioConexao implements Runnable {
 					System.out.println("Saí d'acá");
 					outToClient.flush();
 					// outToClient.close();
-					 in.close();
+					in.close();
 
 				} else if (inputFromClient.startsWith("inic")) {
-					/*
-					 * Jogador objJogador;
-					 * 
-					 * ObjectInputStream inFromCliente = new
-					 * ObjectInputStream(cliente.getInputStream()); objJogador =
-					 * (Jogador)inFromCliente.readObject();
-					 * 
-					 * if(objIniciarPartida.iniciarPartida(cliente, objJogador).equals("aguarde")) {
-					 * while(objIniciarPartida.verificarComecou()) {
-					 * 
-					 * } objJogoDaVelha.Receberjogadores(objIniciarPartida.getObjJogador1(),
-					 * objIniciarPartida.getObjJogador2()); }
-					 * 
-					 * ObjectOutputStream outToClient = new
-					 * ObjectOutputStream(cliente.getOutputStream());
-					 * outToClient.writeObject(objJogoDaVelha);
-					 */
+					//TODO Codar o metodo de envio de String para definir a jogada de cada jogador
+					//flag que define de quem é a jogada
+					//button pressed verifica flag, envia apenas se for a vez do jogador
+					Jogador objJogador;
+
+					ObjectInputStream inFromCliente = new ObjectInputStream(cliente.getInputStream());
+					objJogador = (Jogador) inFromCliente.readObject();
+
+					if (objIniciarPartida.iniciarPartida(cliente, objJogador).equals("aguarde")) {
+						while (objIniciarPartida.verificarComecou()) {
+							System.out.println("namroalconsertaisso");
+							
+						}
+					}
+					objJogoDaVelha.Receberjogadores(objIniciarPartida.getObjJogador1(),objIniciarPartida.getObjJogador2());
+					ObjectOutputStream outToClient = new ObjectOutputStream(cliente.getOutputStream());
+					outToClient.writeObject(objJogoDaVelha);
 
 				}
 			}
 			s.close();
-		} catch (IOException/* | ClassNotFoundException */ e1) {
+		} catch (IOException | ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
