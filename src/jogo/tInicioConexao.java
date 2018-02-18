@@ -86,7 +86,6 @@ public class tInicioConexao implements Runnable {
 					in = new FileInputStream(arquivo);
 					//OutputStream outToClient2;
 					outToClient=cliente.getOutputStream();
-
 			        while ((count = in.read(bytes)) > 0) {
 			            outToClient.write(bytes, 0, count);
 			            //System.out.println("to ali");
