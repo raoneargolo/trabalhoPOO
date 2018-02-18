@@ -11,6 +11,8 @@ public class ServidorMestre {
     public static void main(String[] args) throws IOException {
     	Map<String, String> mapa;
     	LerUsuario lu;
+    	JogoDaVelha objJogoDaVelha=new JogoDaVelha();
+    	
         ServerSocket servidor = new ServerSocket(12346);
         System.out.println("Porta 12345 aberta!");
         Socket cliente;
@@ -26,7 +28,7 @@ public class ServidorMestre {
             );
             
         	//cria um objeto que vai tratar a conexão
-            tInicioConexao tIni = new tInicioConexao(cliente, lu.lerUsuarios(), objIniciarPartida);
+            tInicioConexao tIni = new tInicioConexao(cliente, lu.lerUsuarios(), objIniciarPartida, objJogoDaVelha);
         	
             // cria a thread em cima deste objeto
             Thread threadInicio = new Thread(tIni);
