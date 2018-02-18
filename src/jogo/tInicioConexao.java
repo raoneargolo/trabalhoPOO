@@ -19,11 +19,13 @@ public class tInicioConexao implements Runnable {
 	tIniciarPartida objIniciarPartida = null;
 	String inputFromClient;
 	String buffer[];
+	JogoDaVelha objJogoDaVelha;
 
-	public tInicioConexao(Socket cliente, Map<String, String> mapaU, tIniciarPartida objIniciarPartida) throws IOException {
+	public tInicioConexao(Socket cliente, Map<String, String> mapaU, tIniciarPartida objIniciarPartida, JogoDaVelha objJogoDaVelha) throws IOException {
 		this.cliente = cliente;
 		this.mapaU = mapaU;
 		this.objIniciarPartida = objIniciarPartida;
+		this.objJogoDaVelha=objJogoDaVelha;
 	}
 
 	@Override
@@ -103,9 +105,16 @@ public class tInicioConexao implements Runnable {
 					ObjectInputStream inFromCliente = new ObjectInputStream(cliente.getInputStream());
 					objJogador = (Jogador)inFromCliente.readObject();
 					
-					if(objIniciarPartida.iniciarPartida(cliente, objJogador).equals("comecou")) {
-						
+					if(objIniciarPartida.iniciarPartida(cliente, objJogador).equals("aguarde")) {
+						while(objIniciarPartida.verificarComecou()) {
+							
+						}
+						objJogoDaVelha.Receberjogadores(objIniciarPartida.getObjJogador1(), objIniciarPartida.getObjJogador2());
 					}
+					
+					
+					
+					
 				}
 			}
 			s.close();
