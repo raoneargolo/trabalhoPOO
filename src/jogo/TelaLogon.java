@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class TelaLogon extends JFrame {
 
@@ -88,23 +89,23 @@ public class TelaLogon extends JFrame {
 		setContentPane(contentPane);
 
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(154, 355, 43, 20);
+		lblSenha.setBounds(154, 240, 43, 20);
 		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
 		campoSenha = new JPasswordField();
-		campoSenha.setBounds(209, 357, 175, 20);
+		campoSenha.setBounds(209, 240, 175, 20);
 		
 		
 		JLabel lblUsurio = new JLabel("Usu\u00E1rio");
-		lblUsurio.setBounds(143, 324, 54, 20);
+		lblUsurio.setBounds(143, 190, 54, 20);
 		lblUsurio.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
 		campoUsuario = new JTextField();
-		campoUsuario.setBounds(209, 324, 175, 20);
+		campoUsuario.setBounds(209, 190, 175, 20);
 		campoUsuario.setColumns(10);
 		
 		JButton btnEntrarComoConvidade = new JButton("Entrar como convidado");
-		btnEntrarComoConvidade.setBounds(441, 499, 143, 23);
+		btnEntrarComoConvidade.setBounds(430, 504, 143, 23);
 		btnEntrarComoConvidade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TratamentoDeUsuarios obj = new TratamentoDeUsuarios();
@@ -120,7 +121,7 @@ public class TelaLogon extends JFrame {
 		});
 
 		JButton btnNovoJogador = new JButton("Novo jogador");
-		btnNovoJogador.setBounds(487, 465, 97, 25);
+		btnNovoJogador.setBounds(476, 464, 97, 25);
 		btnNovoJogador.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -134,7 +135,7 @@ public class TelaLogon extends JFrame {
 		});
 
 		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(265, 395, 63, 25);
+		btnEntrar.setBounds(265, 304, 63, 25);
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -260,5 +261,11 @@ public class TelaLogon extends JFrame {
 		contentPane.add(campoSenha);
 		contentPane.add(btnEntrarComoConvidade);
 		contentPane.add(btnNovoJogador);
+		
+		JLabel lblNewLabel = new JLabel("JOGO DA VELHA");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblNewLabel.setBounds(150, 91, 294, 33);
+		contentPane.add(lblNewLabel);
 	}
 }
