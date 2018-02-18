@@ -159,7 +159,7 @@ public class TelaLogon extends JFrame {
 			            System.out.println("File not found. ");
 			        }
 
-			        bytes = new byte[4096];
+			        bytes = new byte[16*1024];
 
 			        try {
 						while ((count = inFromServer.read(bytes)) > 0) {
@@ -195,12 +195,13 @@ public class TelaLogon extends JFrame {
 			            System.out.println("File not found. ");
 			        }
 
-			        bytes = new byte[4096];
+			        bytes = new byte[16*1024];
 			        
 			        try {
 						while ((count = inFromServer.read(bytes)) > 0) {
 						    out.write(bytes, 0, count);
 						    //System.out.println("to aqui");
+						    break;
 						}
 						//System.out.println("sai daqui");
 					} catch (IOException e) {

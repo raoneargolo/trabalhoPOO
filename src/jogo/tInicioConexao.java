@@ -1,5 +1,6 @@
 package jogo;
 
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -65,10 +66,11 @@ public class tInicioConexao implements Runnable {
 					int count;
 					
 					arquivo = new File("Numeros"+subString);
-					bytes = new byte[4096];
+					bytes = new byte[16*1024];
 					
-					in= new FileInputStream(arquivo);
 					outToClient=cliente.getOutputStream();
+					in= new FileInputStream(arquivo);
+					
 					
 			        while ((count = in.read(bytes)) > 0) {
 			            outToClient.write(bytes, 0, count);
@@ -81,7 +83,7 @@ public class tInicioConexao implements Runnable {
 			        //_______________________segundo arquivo___________________________________
 			        
 			        arquivo = new File("Historico"+subString);
-					bytes = new byte[4096];
+					bytes = new byte[16*1024];
 					
 					in = new FileInputStream(arquivo);
 					//OutputStream outToClient2;
@@ -90,8 +92,8 @@ public class tInicioConexao implements Runnable {
 			            outToClient.write(bytes, 0, count);
 			            //System.out.println("to ali");
 			        }
-			        outToClient.close();
-			        in.close();
+			        //outToClient.close();
+			        //in.close();
 			        
 				}
 			}
