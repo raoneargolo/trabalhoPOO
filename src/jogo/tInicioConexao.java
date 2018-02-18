@@ -95,6 +95,8 @@ public class tInicioConexao implements Runnable {
 			        //outToClient.close();
 			        //in.close();
 			        
+				}else if(inputFromClient.startsWith("inic")) {
+					
 				}
 			}
 			s.close();

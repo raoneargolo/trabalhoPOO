@@ -71,7 +71,7 @@ public class TelaCadastro extends JPanel {
 					new tEscritaGeral().enviarParaServidor(cliente, entrada);	
 					
 					setVisible(false); //setar o panel como falso
-					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador); //crio objeto do proximo panel
+					TelaInicial ti = new TelaInicial(frame, mapaUsuarios, objJogador, cliente); //crio objeto do proximo panel
 					frame.setContentPane(ti); //colocar no frame o proximo panel
 				}
 				

@@ -103,7 +103,7 @@ public class TelaLogon extends JFrame {
 				TratamentoDeUsuarios obj = new TratamentoDeUsuarios();
 				usuario = obj.gerarVisitante(mapaUsuarios);
 				Jogador objJogador = new Jogador(usuario, usuario);
-				TelaInicial ti = new TelaInicial(Cliente.frame, mapaUsuarios,objJogador);
+				TelaInicial ti = new TelaInicial(Cliente.frame, mapaUsuarios,objJogador, cliente);
 //				TelaInicial ti = new TelaInicial(mapaUsuarios,objJogador);
 				contentPane.setVisible(false);
 				ti.setVisible(true);
@@ -218,7 +218,7 @@ public class TelaLogon extends JFrame {
 					}*/
 					
 					Jogador objJogador = new Jogador(usuario, senha);
-					TelaInicial ti = new TelaInicial(Cliente.frame, mapaUsuarios, objJogador);
+					TelaInicial ti = new TelaInicial(Cliente.frame, mapaUsuarios, objJogador, cliente);
 //					TelaInicial ti = new TelaInicial(mapaUsuarios, objJogador);
 					contentPane.setVisible(false);
 					ti.setVisible(true);

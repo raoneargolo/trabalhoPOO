@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.net.Socket;
 import java.util.Map;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
@@ -43,7 +44,7 @@ public class TelaInicial extends JPanel {
 	 * Create the panel.
 	 */
 	
-	public TelaInicial(JFrame frame, Map<String, String> mapaUsuarios, Jogador objJogador) {
+	public TelaInicial(JFrame frame, Map<String, String> mapaUsuarios, Jogador objJogador, Socket cliente) {
 //	public TelaInicial(Map<String,String> mapaUsuarios, Jogador objJogador) {
 		String usuario;
 		
@@ -204,6 +205,7 @@ public class TelaInicial extends JPanel {
 		JButton btnIniciarpartida = new JButton("IniciarPartida");
 		btnIniciarpartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				new tEscritaGeral().enviarParaServidor(cliente, "inic");;
 //				JogoDaVelha JV = new JogoDaVelha(objJogador); // instancia panel
 //				frame.setVisible(false); // deixa conteudo do panel atual desabilitado
 //				//JV.setVisible(true); // deixa panel que eu quero habilitado
