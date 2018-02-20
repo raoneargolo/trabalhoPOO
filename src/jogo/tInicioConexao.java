@@ -134,10 +134,27 @@ public class tInicioConexao implements Runnable {
 					saidaNomeAdversario.flush();
 					saidaNomeAdversario.println(adversario);
 					saidaNomeAdversario.flush();
-//					objJogoDaVelha.Receberjogadores(objIniciarPartida.getObjJogador1(),objIniciarPartida.getObjJogador2());
-//					ObjectOutputStream outToClient = new ObjectOutputStream(cliente.getOutputStream());
-//					outToClient.writeObject(objJogoDaVelha);
-//					outToClient.flush();
+					
+					Scanner s2 = new Scanner(cliente.getInputStream());
+					String acaojogador;
+					
+					PrintStream saidaAcao;
+					
+					while(s2.hasNextLine()) {
+						acaojogador=s2.nextLine();
+						if(objJogador.getNomeUsuario().equals(objIniciarPartida.getObjJogador1().getNomeUsuario())) {
+							saidaAcao=new PrintStream(objIniciarPartida.getCliente2().getOutputStream());
+							saidaAcao.flush();
+							saidaAcao.println(acaojogador);
+							saidaAcao.flush();
+						}else {
+							saidaAcao=new PrintStream(objIniciarPartida.getCliente1().getOutputStream());
+							saidaAcao.flush();
+							saidaAcao.println(acaojogador);
+							saidaAcao.flush();
+						}
+					}
+					s2.close();
 
 				}
 			}

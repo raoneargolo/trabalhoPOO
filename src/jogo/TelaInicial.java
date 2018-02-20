@@ -293,6 +293,25 @@ public class TelaInicial extends JPanel {
 					tela = new JogoDaVelha(cliente, buffer[0], objJogador, buffer[1]);
 
 					tela.initialize();
+					
+					//cria um objeto que vai tratar a conexão
+		            tRecebeAcaoServidor tRec = new tRecebeAcaoServidor(tela, cliente);
+		        	
+		            // cria a thread em cima deste objeto
+		            Thread threadInicio = new Thread(tRec);
+
+		            // inicia a thread
+		            threadInicio.start();
+					
+					
+//					String acaoServidor;
+//					Scanner s;
+//					s=new Scanner(cliente.getInputStream());
+//					while(s.hasNextLine()) {
+//						acaoServidor=s.nextLine();
+//						new tRecebeAcaoServidor().executarAcaoServidor(tela, acaoServidor);
+//					}
+//					s.close();
 
 					// ObjectInputStream inFromServer = new
 					// ObjectInputStream(cliente.getInputStream());

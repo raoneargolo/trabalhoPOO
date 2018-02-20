@@ -11,8 +11,11 @@ import java.awt.SystemColor;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.io.Serializable;
+import java.net.Socket;
 import java.util.Random;
+import java.util.Scanner;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
@@ -26,19 +29,33 @@ public class JogoDaVelha{
 	int defineX = rand.nextInt(2);
 	public boolean flag=true,whoseTurn;
 	int[][] matriz= {{2,2,2},{2,2,2},{2,2,2},};
-	private JFrame frame;
-	private Jogador jogador;
+	public JFrame frame;
+	public Jogador jogador;
 	private String adversario;
-	private boolean minhaVez=false;
+	public boolean minhaVez=false;
 	private boolean primeiro=false;
+	public Socket cliente;
+//	botoes
+	public JButton button1;
+	public JButton button2;
+	public JButton button3;
+	public JButton button4;
+	public JButton button5;
+	public JButton button6;
+	public JButton button7;
+	public JButton button8;
+	public JButton button9;
 	
-	public JogoDaVelha(String minhaPosicao, Jogador jogador, String adversario) {
+	
+	public JogoDaVelha(Socket cliente, String minhaPosicao, Jogador jogador, String adversario) {
 		if(minhaPosicao.equals("j1")) {			
 			minhaVez=true;
 			primeiro=true;
 		}
 		this.jogador=jogador;
 		this.adversario=adversario;
+		
+		this.cliente=cliente;
 		
 		if(defineX==0) {
 			whoseTurn=true;
@@ -80,21 +97,25 @@ public class JogoDaVelha{
 	
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws IOException 
 	 * @wbp.parser.entryPoint
 	 */
-	public void initialize() {
+	public void initialize() throws IOException {
 		frame = new JFrame();
 		frame.setVisible(true);
 		frame.setBounds(100, 100, 677, 421);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton button1 = new JButton("");
+		button1 = new JButton("");
 		button1.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button1.setToolTipText("");
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(minhaVez) {
+					
+					new tEscritaGeral().enviarParaServidor(cliente, "1");
+					
 					if(flag) {
 						matriz[0][0]=0;
 						button1.setText("X");
@@ -128,11 +149,14 @@ public class JogoDaVelha{
 		frame.getContentPane().add(button1);
 		
 		
-		JButton button2 = new JButton("");
+		button2 = new JButton("");
 		button2.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(minhaVez) {
+					
+					new tEscritaGeral().enviarParaServidor(cliente, "2");
+					
 					if(flag) {
 						matriz[1][0]=0;
 						button2.setText("X");
@@ -164,11 +188,14 @@ public class JogoDaVelha{
 		button2.setBounds(0, 86, 146, 87);
 		frame.getContentPane().add(button2);
 		
-		JButton button3 = new JButton("");
+		button3 = new JButton("");
 		button3.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(minhaVez) {
+					
+					new tEscritaGeral().enviarParaServidor(cliente, "3");
+					
 					if(flag) {
 						matriz[2][0]=0;
 						button3.setText("X");
@@ -199,11 +226,14 @@ public class JogoDaVelha{
 		button3.setBounds(0, 174, 146, 87);
 		frame.getContentPane().add(button3);
 		
-		JButton button4 = new JButton("");
+		button4 = new JButton("");
 		button4.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(minhaVez) {
+					
+					new tEscritaGeral().enviarParaServidor(cliente, "4");
+					
 					if(flag) {
 						matriz[0][1]=0;
 						button4.setText("X");
@@ -235,11 +265,14 @@ public class JogoDaVelha{
 		button4.setBounds(145, 0, 146, 87);
 		frame.getContentPane().add(button4);
 		
-		JButton button5 = new JButton("");
+		button5 = new JButton("");
 		button5.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(minhaVez) {
+					
+					new tEscritaGeral().enviarParaServidor(cliente, "5");
+					
 					if(flag) {
 						matriz[1][1]=0;
 						button5.setText("X");
@@ -271,11 +304,14 @@ public class JogoDaVelha{
 		button5.setBounds(145, 86, 146, 87);
 		frame.getContentPane().add(button5);
 		
-		JButton button6 = new JButton("");
+		button6 = new JButton("");
 		button6.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(minhaVez) {
+					
+					new tEscritaGeral().enviarParaServidor(cliente, "6");
+					
 					if(flag) {
 						matriz[2][1]=0;
 						button6.setText("X");
@@ -307,11 +343,14 @@ public class JogoDaVelha{
 		button6.setBounds(145, 174, 146, 87);
 		frame.getContentPane().add(button6);
 		
-		JButton button7 = new JButton("");
+		button7 = new JButton("");
 		button7.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(minhaVez) {
+					
+					new tEscritaGeral().enviarParaServidor(cliente, "7");
+					
 					if(flag) {
 						matriz[0][2]=0;
 						button7.setText("X");
@@ -343,11 +382,14 @@ public class JogoDaVelha{
 		button7.setBounds(290, 0, 146, 87);
 		frame.getContentPane().add(button7);
 		
-		JButton button8 = new JButton("");
+		button8 = new JButton("");
 		button8.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(minhaVez) {
+					
+					new tEscritaGeral().enviarParaServidor(cliente, "8");
+					
 					if(flag) {
 						matriz[1][2]=0;
 						button8.setText("X");
@@ -379,11 +421,14 @@ public class JogoDaVelha{
 		button8.setBounds(290, 86, 146, 87);
 		frame.getContentPane().add(button8);
 		
-		JButton button9 = new JButton("");
+		button9 = new JButton("");
 		button9.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(minhaVez) {
+					
+					new tEscritaGeral().enviarParaServidor(cliente, "9");
+					
 					if(flag) {
 						matriz[2][2]=0;
 						button9.setText("X");
@@ -415,6 +460,10 @@ public class JogoDaVelha{
 		button9.setBounds(290, 174, 146, 87);
 		frame.getContentPane().add(button9);
 		
+		
+		
+		
+		
 		JLabel lblNewLabel = new JLabel("Jogador 1");
 		lblNewLabel.setBounds(530, 13, 71, 16);
 		frame.getContentPane().add(lblNewLabel);
@@ -440,5 +489,240 @@ public class JogoDaVelha{
 		}else {
 			label_1.setText(jogador.getNomeUsuario());
 		}
+		
+		//______________________________________________bloco de receber acao do servidor___________________________________
+
+//					
+//					if(acaoServidor.equals("1")) {
+//						if(flag) {
+//							matriz[0][0]=0;
+//							button1.setText("X");
+//							if(controlador.checkMatriz(matriz,1,0)) {
+//								JOptionPane.showMessageDialog(null, "X venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=false;
+//						}
+//						else {
+//							matriz[0][0]=1;
+//							button1.setText("O");
+//							if(controlador.checkMatriz(matriz,1,1)) {
+//								JOptionPane.showMessageDialog(null, "O venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=true;
+//						}
+//						minhaVez=true;
+//						
+//						button1.setEnabled(false);
+//						if(controlador.verificaEmpate()){
+//							JOptionPane.showMessageDialog(null, "Deu velha");
+//							controlador.terminaJogo(true,frame, jogador);
+//						}
+//					}else if(acaoServidor.equals("2")) {
+//						if(flag) {
+//							matriz[1][0]=0;
+//							button2.setText("X");
+//							if(controlador.checkMatriz(matriz,2,0)) {
+//								JOptionPane.showMessageDialog(null, "X venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=false;
+//						}
+//						else {
+//							matriz[1][0]=1;
+//							button2.setText("O");
+//							if(controlador.checkMatriz(matriz,2,1)) {
+//								JOptionPane.showMessageDialog(null, "O venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=true;
+//						}
+//						button2.setEnabled(false);
+//						if(controlador.verificaEmpate()){
+//							JOptionPane.showMessageDialog(null, "Deu velha");
+//							controlador.terminaJogo(true,frame, jogador);
+//						}
+//						minhaVez=true;
+//					}else if(acaoServidor.equals("3")) {
+//						if(flag) {
+//							matriz[2][0]=0;
+//							button3.setText("X");
+//							if(controlador.checkMatriz(matriz,3,0)) {
+//								JOptionPane.showMessageDialog(null, "X venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=false;
+//						}
+//						else {
+//							matriz[2][0]=1;
+//							button3.setText("O");
+//							if(controlador.checkMatriz(matriz,3,1)) {
+//								JOptionPane.showMessageDialog(null, "O venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=true;
+//						}
+//						button3.setEnabled(false);
+//						if(controlador.verificaEmpate()){
+//							JOptionPane.showMessageDialog(null, "Deu velha");
+//							controlador.terminaJogo(true,frame, jogador);
+//						}
+//						minhaVez=true;
+//					}else if(acaoServidor.equals("4")) {
+//						if(flag) {
+//							matriz[0][1]=0;
+//							button4.setText("X");
+//							if(controlador.checkMatriz(matriz,4,0)) {
+//								JOptionPane.showMessageDialog(null, "X venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=false;
+//						}
+//						else {
+//							matriz[0][1]=1;
+//							button4.setText("O");
+//							if(controlador.checkMatriz(matriz,4,1)) {
+//								JOptionPane.showMessageDialog(null, "O venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=true;
+//						}
+//						button4.setEnabled(false);
+//						if(controlador.verificaEmpate()){
+//							JOptionPane.showMessageDialog(null, "Deu velha");
+//							controlador.terminaJogo(true,frame, jogador);
+//						}
+//						minhaVez=true;
+//					}else if(acaoServidor.equals("5")) {
+//						if(flag) {
+//							matriz[1][1]=0;
+//							button5.setText("X");
+//							if(controlador.checkMatriz(matriz,5,0)) {
+//								JOptionPane.showMessageDialog(null, "X venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=false;
+//						}
+//						else {
+//							matriz[1][1]=1;
+//							button5.setText("O");
+//							if(controlador.checkMatriz(matriz,5,1)) {
+//								JOptionPane.showMessageDialog(null, "O venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=true;
+//						}
+//						button5.setEnabled(false);
+//						if(controlador.verificaEmpate()){
+//							JOptionPane.showMessageDialog(null, "Deu velha");
+//							controlador.terminaJogo(true,frame, jogador);
+//						}
+//						minhaVez=true;
+//					}else if(acaoServidor.equals("6")) {
+//						if(flag) {
+//							matriz[2][1]=0;
+//							button6.setText("X");
+//							if(controlador.checkMatriz(matriz,6,0)) {
+//								JOptionPane.showMessageDialog(null, "X venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=false;
+//						}
+//						else {
+//							matriz[2][1]=1;
+//							button6.setText("O");
+//							if(controlador.checkMatriz(matriz,6,1)) {
+//								JOptionPane.showMessageDialog(null, "O venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=true;
+//						}
+//						button6.setEnabled(false);
+//						if(controlador.verificaEmpate()){
+//							JOptionPane.showMessageDialog(null, "Deu velha");
+//							controlador.terminaJogo(true,frame, jogador);
+//						}
+//						minhaVez=true;
+//					}else if(acaoServidor.equals("7")) {
+//						if(flag) {
+//							matriz[0][2]=0;
+//							button7.setText("X");
+//							if(controlador.checkMatriz(matriz,7,0)) {
+//								JOptionPane.showMessageDialog(null, "X venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=false;
+//						}
+//						else {
+//							matriz[0][2]=1;
+//							button7.setText("O");
+//							if(controlador.checkMatriz(matriz,7,1)) {
+//								JOptionPane.showMessageDialog(null, "O venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=true;
+//						}
+//						button7.setEnabled(false);
+//						if(controlador.verificaEmpate()){
+//							JOptionPane.showMessageDialog(null, "Deu velha");
+//							controlador.terminaJogo(true,frame, jogador);
+//						}
+//						minhaVez=true;
+//					}else if(acaoServidor.equals("8")) {
+//						if(flag) {
+//							matriz[1][2]=0;
+//							button8.setText("X");
+//							if(controlador.checkMatriz(matriz,8,0)) {
+//								JOptionPane.showMessageDialog(null, "X venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=false;
+//						}
+//						else {
+//							matriz[1][2]=1;
+//							button8.setText("O");
+//							if(controlador.checkMatriz(matriz,8,1)) {
+//								JOptionPane.showMessageDialog(null, "O venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=true;
+//						}
+//						button8.setEnabled(false);
+//						if(controlador.verificaEmpate()){
+//							JOptionPane.showMessageDialog(null, "Deu velha");
+//							controlador.terminaJogo(true,frame, jogador);
+//						}
+//						minhaVez=true;
+//					}else if(acaoServidor.equals("9")) {
+//						if(flag) {
+//							matriz[2][2]=0;
+//							button9.setText("X");
+//							if(controlador.checkMatriz(matriz,9,0)) {
+//								JOptionPane.showMessageDialog(null, "X venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=false;
+//						}
+//						else {
+//							matriz[2][2]=1;
+//							button9.setText("O");
+//							if(controlador.checkMatriz(matriz,9,1)) {
+//								JOptionPane.showMessageDialog(null, "O venceu!");
+//								controlador.terminaJogo(false,frame, jogador);
+//							}
+//							flag=true;
+//						}
+//						button9.setEnabled(false);
+//						if(controlador.verificaEmpate()){
+//							JOptionPane.showMessageDialog(null, "Deu velha");
+//							controlador.terminaJogo(true,frame, jogador);
+//						}
+//						minhaVez=true;
+//					}
+//					
+				
+				//______________________________________________________fim do bloco________________________________________________
+		
 	}
 }
