@@ -61,8 +61,8 @@ public class ControlaJogo implements Serializable{
 		}
 		return false;
 	}
-	public void terminaJogo(boolean empate, JFrame frame, Jogador objJogador) {
-		objJogador.computarResultado("visitante", "Derrota");
+	public void terminaJogo(JFrame frame, Jogador objJogador, String adversario, String resultado) {
+		objJogador.computarResultado(adversario, resultado);
 		frame.dispose();
 	}
 }
