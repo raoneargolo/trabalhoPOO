@@ -20,10 +20,10 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 @SuppressWarnings("unused")
-public class JogoDaVelha implements Serializable{
+public class JogoDaVelha{
 	ControlaJogo controlador = new ControlaJogo();
 	Random rand = new Random();
-	int defineX = rand.nextInt(2);
+//	int defineX = rand.nextInt(2);
 	public boolean flag=true,whoseTurn;
 	int[][] matriz= {{2,2,2},{2,2,2},{2,2,2},};
 	private JFrame frame;
@@ -32,6 +32,9 @@ public class JogoDaVelha implements Serializable{
 	private boolean minhaVez=false;
 	private boolean primeiro=false;
 	
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public JogoDaVelha(String minhaPosicao, Jogador jogador, String adversario) {
 		if(minhaPosicao.equals("j1")) {			
 			minhaVez=true;
@@ -40,12 +43,12 @@ public class JogoDaVelha implements Serializable{
 		this.jogador=jogador;
 		this.adversario=adversario;
 		
-		if(defineX==0) {
-			whoseTurn=true;
-		}
-		else {
-			whoseTurn=false;
-		}
+//		if(defineX==0) {
+//			whoseTurn=true;
+//		}
+//		else {
+//			whoseTurn=false;
+//		}
 		//initialize();
 	}
 	
@@ -80,6 +83,7 @@ public class JogoDaVelha implements Serializable{
 	
 	/**
 	 * Initialize the contents of the frame.
+	 * @wbp.parser.entryPoint
 	 */
 	public void initialize() {
 		frame = new JFrame();
