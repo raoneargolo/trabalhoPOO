@@ -23,7 +23,7 @@ import java.awt.Font;
 public class JogoDaVelha{
 	ControlaJogo controlador = new ControlaJogo();
 	Random rand = new Random();
-//	int defineX = rand.nextInt(2);
+	int defineX = rand.nextInt(2);
 	public boolean flag=true,whoseTurn;
 	int[][] matriz= {{2,2,2},{2,2,2},{2,2,2},};
 	private JFrame frame;
@@ -32,9 +32,6 @@ public class JogoDaVelha{
 	private boolean minhaVez=false;
 	private boolean primeiro=false;
 	
-	/**
-	 * @wbp.parser.entryPoint
-	 */
 	public JogoDaVelha(String minhaPosicao, Jogador jogador, String adversario) {
 		if(minhaPosicao.equals("j1")) {			
 			minhaVez=true;
@@ -43,12 +40,12 @@ public class JogoDaVelha{
 		this.jogador=jogador;
 		this.adversario=adversario;
 		
-//		if(defineX==0) {
-//			whoseTurn=true;
-//		}
-//		else {
-//			whoseTurn=false;
-//		}
+		if(defineX==0) {
+			whoseTurn=true;
+		}
+		else {
+			whoseTurn=false;
+		}
 		//initialize();
 	}
 	
@@ -97,29 +94,34 @@ public class JogoDaVelha{
 		button1.setToolTipText("");
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(flag) {
-					matriz[0][0]=0;
-					button1.setText("X");
-					if(controlador.checkMatriz(matriz,1,0)) {
-						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+				if(minhaVez) {
+					if(flag) {
+						matriz[0][0]=0;
+						button1.setText("X");
+						if(controlador.checkMatriz(matriz,1,0)) {
+							JOptionPane.showMessageDialog(null, "X venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=false;
 					}
-					flag=false;
-				}
-				else {
-					matriz[0][0]=1;
-					button1.setText("O");
-					if(controlador.checkMatriz(matriz,1,1)) {
-						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+					else {
+						matriz[0][0]=1;
+						button1.setText("O");
+						if(controlador.checkMatriz(matriz,1,1)) {
+							JOptionPane.showMessageDialog(null, "O venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=true;
 					}
-					flag=true;
+					minhaVez=false;
+					
+					button1.setEnabled(false);
+					if(controlador.verificaEmpate()){
+						JOptionPane.showMessageDialog(null, "Deu velha");
+						controlador.terminaJogo(true,frame, jogador);
+					}
 				}
-				button1.setEnabled(false);
-				if(controlador.verificaEmpate()){
-					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador);
-				}
+				
 			}
 		});
 		button1.setBounds(0, 0, 146, 87);
@@ -130,29 +132,33 @@ public class JogoDaVelha{
 		button2.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(flag) {
-					matriz[1][0]=0;
-					button2.setText("X");
-					if(controlador.checkMatriz(matriz,2,0)) {
-						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+				if(minhaVez) {
+					if(flag) {
+						matriz[1][0]=0;
+						button2.setText("X");
+						if(controlador.checkMatriz(matriz,2,0)) {
+							JOptionPane.showMessageDialog(null, "X venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=false;
 					}
-					flag=false;
-				}
-				else {
-					matriz[1][0]=1;
-					button2.setText("O");
-					if(controlador.checkMatriz(matriz,2,1)) {
-						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+					else {
+						matriz[1][0]=1;
+						button2.setText("O");
+						if(controlador.checkMatriz(matriz,2,1)) {
+							JOptionPane.showMessageDialog(null, "O venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=true;
 					}
-					flag=true;
+					button2.setEnabled(false);
+					if(controlador.verificaEmpate()){
+						JOptionPane.showMessageDialog(null, "Deu velha");
+						controlador.terminaJogo(true,frame, jogador);
+					}
+					minhaVez=false;
 				}
-				button2.setEnabled(false);
-				if(controlador.verificaEmpate()){
-					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador);
-				}
+				
 			}
 		});
 		button2.setBounds(0, 86, 146, 87);
@@ -162,28 +168,31 @@ public class JogoDaVelha{
 		button3.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(flag) {
-					matriz[2][0]=0;
-					button3.setText("X");
-					if(controlador.checkMatriz(matriz,3,0)) {
-						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+				if(minhaVez) {
+					if(flag) {
+						matriz[2][0]=0;
+						button3.setText("X");
+						if(controlador.checkMatriz(matriz,3,0)) {
+							JOptionPane.showMessageDialog(null, "X venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=false;
 					}
-					flag=false;
-				}
-				else {
-					matriz[2][0]=1;
-					button3.setText("O");
-					if(controlador.checkMatriz(matriz,3,1)) {
-						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+					else {
+						matriz[2][0]=1;
+						button3.setText("O");
+						if(controlador.checkMatriz(matriz,3,1)) {
+							JOptionPane.showMessageDialog(null, "O venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=true;
 					}
-					flag=true;
-				}
-				button3.setEnabled(false);
-				if(controlador.verificaEmpate()){
-					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador);
+					button3.setEnabled(false);
+					if(controlador.verificaEmpate()){
+						JOptionPane.showMessageDialog(null, "Deu velha");
+						controlador.terminaJogo(true,frame, jogador);
+					}
+					minhaVez=false;
 				}
 			}
 		});
@@ -194,29 +203,33 @@ public class JogoDaVelha{
 		button4.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(flag) {
-					matriz[0][1]=0;
-					button4.setText("X");
-					if(controlador.checkMatriz(matriz,4,0)) {
-						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+				if(minhaVez) {
+					if(flag) {
+						matriz[0][1]=0;
+						button4.setText("X");
+						if(controlador.checkMatriz(matriz,4,0)) {
+							JOptionPane.showMessageDialog(null, "X venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=false;
 					}
-					flag=false;
-				}
-				else {
-					matriz[0][1]=1;
-					button4.setText("O");
-					if(controlador.checkMatriz(matriz,4,1)) {
-						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+					else {
+						matriz[0][1]=1;
+						button4.setText("O");
+						if(controlador.checkMatriz(matriz,4,1)) {
+							JOptionPane.showMessageDialog(null, "O venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=true;
 					}
-					flag=true;
+					button4.setEnabled(false);
+					if(controlador.verificaEmpate()){
+						JOptionPane.showMessageDialog(null, "Deu velha");
+						controlador.terminaJogo(true,frame, jogador);
+					}
+					minhaVez=false;
 				}
-				button4.setEnabled(false);
-				if(controlador.verificaEmpate()){
-					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador);
-				}
+				
 			}
 		});
 		button4.setBounds(145, 0, 146, 87);
@@ -226,29 +239,33 @@ public class JogoDaVelha{
 		button5.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(flag) {
-					matriz[1][1]=0;
-					button5.setText("X");
-					if(controlador.checkMatriz(matriz,5,0)) {
-						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+				if(minhaVez) {
+					if(flag) {
+						matriz[1][1]=0;
+						button5.setText("X");
+						if(controlador.checkMatriz(matriz,5,0)) {
+							JOptionPane.showMessageDialog(null, "X venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=false;
 					}
-					flag=false;
-				}
-				else {
-					matriz[1][1]=1;
-					button5.setText("O");
-					if(controlador.checkMatriz(matriz,5,1)) {
-						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+					else {
+						matriz[1][1]=1;
+						button5.setText("O");
+						if(controlador.checkMatriz(matriz,5,1)) {
+							JOptionPane.showMessageDialog(null, "O venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=true;
 					}
-					flag=true;
+					button5.setEnabled(false);
+					if(controlador.verificaEmpate()){
+						JOptionPane.showMessageDialog(null, "Deu velha");
+						controlador.terminaJogo(true,frame, jogador);
+					}
+					minhaVez=false;
 				}
-				button5.setEnabled(false);
-				if(controlador.verificaEmpate()){
-					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador);
-				}
+				
 			}
 		});
 		button5.setBounds(145, 86, 146, 87);
@@ -258,29 +275,33 @@ public class JogoDaVelha{
 		button6.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(flag) {
-					matriz[2][1]=0;
-					button6.setText("X");
-					if(controlador.checkMatriz(matriz,6,0)) {
-						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+				if(minhaVez) {
+					if(flag) {
+						matriz[2][1]=0;
+						button6.setText("X");
+						if(controlador.checkMatriz(matriz,6,0)) {
+							JOptionPane.showMessageDialog(null, "X venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=false;
 					}
-					flag=false;
-				}
-				else {
-					matriz[2][1]=1;
-					button6.setText("O");
-					if(controlador.checkMatriz(matriz,6,1)) {
-						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+					else {
+						matriz[2][1]=1;
+						button6.setText("O");
+						if(controlador.checkMatriz(matriz,6,1)) {
+							JOptionPane.showMessageDialog(null, "O venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=true;
 					}
-					flag=true;
+					button6.setEnabled(false);
+					if(controlador.verificaEmpate()){
+						JOptionPane.showMessageDialog(null, "Deu velha");
+						controlador.terminaJogo(true,frame, jogador);
+					}
+					minhaVez=false;
 				}
-				button6.setEnabled(false);
-				if(controlador.verificaEmpate()){
-					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador);
-				}
+				
 			}
 		});
 		button6.setBounds(145, 174, 146, 87);
@@ -290,29 +311,33 @@ public class JogoDaVelha{
 		button7.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(flag) {
-					matriz[0][2]=0;
-					button7.setText("X");
-					if(controlador.checkMatriz(matriz,7,0)) {
-						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+				if(minhaVez) {
+					if(flag) {
+						matriz[0][2]=0;
+						button7.setText("X");
+						if(controlador.checkMatriz(matriz,7,0)) {
+							JOptionPane.showMessageDialog(null, "X venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=false;
 					}
-					flag=false;
-				}
-				else {
-					matriz[0][2]=1;
-					button7.setText("O");
-					if(controlador.checkMatriz(matriz,7,1)) {
-						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+					else {
+						matriz[0][2]=1;
+						button7.setText("O");
+						if(controlador.checkMatriz(matriz,7,1)) {
+							JOptionPane.showMessageDialog(null, "O venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=true;
 					}
-					flag=true;
+					button7.setEnabled(false);
+					if(controlador.verificaEmpate()){
+						JOptionPane.showMessageDialog(null, "Deu velha");
+						controlador.terminaJogo(true,frame, jogador);
+					}
+					minhaVez=false;
 				}
-				button7.setEnabled(false);
-				if(controlador.verificaEmpate()){
-					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador);
-				}
+				
 			}
 		});
 		button7.setBounds(290, 0, 146, 87);
@@ -322,29 +347,33 @@ public class JogoDaVelha{
 		button8.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(flag) {
-					matriz[1][2]=0;
-					button8.setText("X");
-					if(controlador.checkMatriz(matriz,8,0)) {
-						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+				if(minhaVez) {
+					if(flag) {
+						matriz[1][2]=0;
+						button8.setText("X");
+						if(controlador.checkMatriz(matriz,8,0)) {
+							JOptionPane.showMessageDialog(null, "X venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=false;
 					}
-					flag=false;
-				}
-				else {
-					matriz[1][2]=1;
-					button8.setText("O");
-					if(controlador.checkMatriz(matriz,8,1)) {
-						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+					else {
+						matriz[1][2]=1;
+						button8.setText("O");
+						if(controlador.checkMatriz(matriz,8,1)) {
+							JOptionPane.showMessageDialog(null, "O venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=true;
 					}
-					flag=true;
+					button8.setEnabled(false);
+					if(controlador.verificaEmpate()){
+						JOptionPane.showMessageDialog(null, "Deu velha");
+						controlador.terminaJogo(true,frame, jogador);
+					}
+					minhaVez=false;
 				}
-				button8.setEnabled(false);
-				if(controlador.verificaEmpate()){
-					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador);
-				}
+				
 			}
 		});
 		button8.setBounds(290, 86, 146, 87);
@@ -354,29 +383,33 @@ public class JogoDaVelha{
 		button9.setFont(new Font("Tahoma", Font.BOLD, 70));
 		button9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(flag) {
-					matriz[2][2]=0;
-					button9.setText("X");
-					if(controlador.checkMatriz(matriz,9,0)) {
-						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+				if(minhaVez) {
+					if(flag) {
+						matriz[2][2]=0;
+						button9.setText("X");
+						if(controlador.checkMatriz(matriz,9,0)) {
+							JOptionPane.showMessageDialog(null, "X venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=false;
 					}
-					flag=false;
-				}
-				else {
-					matriz[2][2]=1;
-					button9.setText("O");
-					if(controlador.checkMatriz(matriz,9,1)) {
-						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador);
+					else {
+						matriz[2][2]=1;
+						button9.setText("O");
+						if(controlador.checkMatriz(matriz,9,1)) {
+							JOptionPane.showMessageDialog(null, "O venceu!");
+							controlador.terminaJogo(false,frame, jogador);
+						}
+						flag=true;
 					}
-					flag=true;
+					button9.setEnabled(false);
+					if(controlador.verificaEmpate()){
+						JOptionPane.showMessageDialog(null, "Deu velha");
+						controlador.terminaJogo(true,frame, jogador);
+					}
+					minhaVez=false;
 				}
-				button9.setEnabled(false);
-				if(controlador.verificaEmpate()){
-					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador);
-				}
+				
 			}
 		});
 		button9.setBounds(290, 174, 146, 87);
