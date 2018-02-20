@@ -277,8 +277,10 @@ public class TelaInicial extends JPanel {
 				try {
 					ObjectOutputStream outToServer = new ObjectOutputStream(cliente.getOutputStream());
 					outToServer.writeObject(objJogador);
+					outToServer.flush();
 					ObjectInputStream inFromServer = new ObjectInputStream(cliente.getInputStream());
 					JogoDaVelha tela = (JogoDaVelha)inFromServer.readObject();
+					inFromServer.skip(inFromServer.available());
 					tela.initialize();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

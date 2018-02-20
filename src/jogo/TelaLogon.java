@@ -186,6 +186,7 @@ public class TelaLogon extends JFrame {
 						    System.out.println("to aqui");
 						    break;
 						}
+						//inFromServer.skip(inFromServer.available());
 						out.flush();
 						System.out.println("sai daqui");
 					} catch (IOException e) {
@@ -224,6 +225,7 @@ public class TelaLogon extends JFrame {
 						    break;
 						}
 						out.flush();
+						//inFromServer.skip(inFromServer.available());
 						System.out.println("sai dacolá");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block

@@ -29,25 +29,23 @@ public class tIniciarPartida {
 		return objJogador2;
 	}	
 	
-	public String iniciarPartida(Socket cliente, Jogador objJogador) {
+	public void iniciarPartida(Socket cliente, Jogador objJogador) {
 		if(cont==0) {
 			this.objJogador1=objJogador;
 			this.cliente1=cliente;
 			cont++;
-			return "aguarde";
 		}else {
 			this.objJogador2=objJogador;
 			this.cliente2=cliente;
 			cont++;
-			return "comecou";
 		}
 	}
 	
 	public boolean verificarComecou() {
 		if (cont==2) {
-			return false;
-		}else {
 			return true;
+		}else {
+			return false;
 		}
 	}
 	

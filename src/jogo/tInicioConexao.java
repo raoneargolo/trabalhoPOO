@@ -107,19 +107,26 @@ public class tInicioConexao implements Runnable {
 					//flag que define de quem é a jogada
 					//button pressed verifica flag, envia apenas se for a vez do jogador
 					Jogador objJogador;
+					boolean verificarC = true;
 
 					ObjectInputStream inFromCliente = new ObjectInputStream(cliente.getInputStream());
 					objJogador = (Jogador) inFromCliente.readObject();
-
-					if (objIniciarPartida.iniciarPartida(cliente, objJogador).equals("aguarde")) {
-						while (objIniciarPartida.verificarComecou()) {
-							System.out.println("namroalconsertaisso");
-							
+					inFromCliente.skip(inFromCliente.available());
+					
+					objIniciarPartida.iniciarPartida(cliente, objJogador);
+					
+					while (verificarC) {
+						if(objIniciarPartida.verificarComecou()) {
+							verificarC=false;
 						}
+						System.out.print("");
+							
 					}
+					
 					objJogoDaVelha.Receberjogadores(objIniciarPartida.getObjJogador1(),objIniciarPartida.getObjJogador2());
 					ObjectOutputStream outToClient = new ObjectOutputStream(cliente.getOutputStream());
 					outToClient.writeObject(objJogoDaVelha);
+					outToClient.flush();
 
 				}
 			}
