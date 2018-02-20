@@ -31,8 +31,8 @@ public class ServidorMestre {
             if(contJogadores%2==0) {
             	objIniciarPartida=new tIniciarPartida();
             	objJogoDaVelha=new JogoDaVelha();
-            	contJogadores++;
             }
+            contJogadores++;
             
         	//cria um objeto que vai tratar a conexão
             tInicioConexao tIni = new tInicioConexao(cliente, lu.lerUsuarios(), objIniciarPartida, objJogoDaVelha);
