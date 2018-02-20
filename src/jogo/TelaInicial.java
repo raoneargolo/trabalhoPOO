@@ -290,7 +290,7 @@ public class TelaInicial extends JPanel {
 					buffer = escritaServidor.split(":");
 					System.out.println(buffer[0]+":"+buffer[1]);
 
-					tela = new JogoDaVelha(buffer[0], objJogador, buffer[1]);
+					tela = new JogoDaVelha(cliente, buffer[0], objJogador, buffer[1]);
 
 					tela.initialize();
 
