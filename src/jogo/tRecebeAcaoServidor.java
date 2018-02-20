@@ -29,9 +29,13 @@ public class tRecebeAcaoServidor implements Runnable{
 						if(tela.controlador.checkMatriz(tela.matriz,1,0)) {
 							if(tela.primeiro) {
 								JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+								new tEscritaGeral().enviarParaServidor(cliente, "0");
+								new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 								tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 							}else {
 								JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+								new tEscritaGeral().enviarParaServidor(cliente, "0");
+								new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 								tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 							}
 						}
@@ -43,9 +47,13 @@ public class tRecebeAcaoServidor implements Runnable{
 						if(tela.controlador.checkMatriz(tela.matriz,1,1)) {
 							if(tela.primeiro) {
 								JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+								new tEscritaGeral().enviarParaServidor(cliente, "0");
+								new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 								tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 							}else {
 								JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+								new tEscritaGeral().enviarParaServidor(cliente, "0");
+								new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 								tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 							}
 						}
@@ -56,6 +64,8 @@ public class tRecebeAcaoServidor implements Runnable{
 					tela.button1.setEnabled(false);
 					if(tela.controlador.verificaEmpate()){
 						JOptionPane.showMessageDialog(null, "Deu velha");
+						new tEscritaGeral().enviarParaServidor(cliente, "0");
+						new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Empate");
 						tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Empate");
 					}
 				}else if(acaoServidor.equals("2")) {
@@ -65,9 +75,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,2,0)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}
 					}
@@ -79,9 +93,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,2,1)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}
 					}
@@ -90,6 +108,8 @@ public class tRecebeAcaoServidor implements Runnable{
 					tela.button2.setEnabled(false);
 				if(tela.controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
+					new tEscritaGeral().enviarParaServidor(cliente, "0");
+					new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Empate");
 					tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Empate");
 				}
 				tela.minhaVez=true;
@@ -100,9 +120,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,3,0)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}
 					}
@@ -114,9 +138,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,3,1)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}
 					}
@@ -125,6 +153,8 @@ public class tRecebeAcaoServidor implements Runnable{
 				tela.button3.setEnabled(false);
 				if(tela.controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
+					new tEscritaGeral().enviarParaServidor(cliente, "0");
+					new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Empate");
 					tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Empate");
 				}
 				tela.minhaVez=true;
@@ -135,9 +165,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,4,0)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}
 					}
@@ -149,9 +183,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,4,1)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}
 					}
@@ -160,6 +198,8 @@ public class tRecebeAcaoServidor implements Runnable{
 				tela.button4.setEnabled(false);
 				if(tela.controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
+					new tEscritaGeral().enviarParaServidor(cliente, "0");
+					new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Empate");
 					tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Empate");
 				}
 				tela.minhaVez=true;
@@ -170,9 +210,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,5,0)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}
 					}
@@ -184,9 +228,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,5,1)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}
 					}
@@ -195,6 +243,8 @@ public class tRecebeAcaoServidor implements Runnable{
 				tela.button5.setEnabled(false);
 				if(tela.controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
+					new tEscritaGeral().enviarParaServidor(cliente, "0");
+					new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Empate");
 					tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Empate");
 				}
 				tela.minhaVez=true;
@@ -205,9 +255,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,6,0)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}
 					}
@@ -219,9 +273,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,6,1)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}
 					}
@@ -230,6 +288,8 @@ public class tRecebeAcaoServidor implements Runnable{
 				tela.button6.setEnabled(false);
 				if(tela.controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
+					new tEscritaGeral().enviarParaServidor(cliente, "0");
+					new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Empate");
 					tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Empate");
 				}
 				tela.minhaVez=true;
@@ -240,9 +300,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,7,0)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}
 					}
@@ -254,9 +318,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,7,1)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}
 					}
@@ -265,6 +333,8 @@ public class tRecebeAcaoServidor implements Runnable{
 				tela.button7.setEnabled(false);
 				if(tela.controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
+					new tEscritaGeral().enviarParaServidor(cliente, "0");
+					new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Empate");
 					tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Empate");
 				}
 				tela.minhaVez=true;
@@ -275,9 +345,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,8,0)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}
 					}
@@ -289,9 +363,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,8,1)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}
 					}
@@ -300,6 +378,8 @@ public class tRecebeAcaoServidor implements Runnable{
 				tela.button8.setEnabled(false);
 				if(tela.controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
+					new tEscritaGeral().enviarParaServidor(cliente, "0");
+					new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Empate");
 					tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Empate");
 				}
 				tela.minhaVez=true;
@@ -310,9 +390,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,9,0)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}
 					}
@@ -324,9 +408,13 @@ public class tRecebeAcaoServidor implements Runnable{
 					if(tela.controlador.checkMatriz(tela.matriz,9,1)) {
 						if(tela.primeiro) {
 							JOptionPane.showMessageDialog(null, tela.adversario+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Derrota");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Derrota");
 						}else {
 							JOptionPane.showMessageDialog(null, tela.jogador.getNomeUsuario()+" venceu!");
+							new tEscritaGeral().enviarParaServidor(cliente, "0");
+							new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Vitoria");
 							tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Vitoria");
 						}
 					}
@@ -335,6 +423,8 @@ public class tRecebeAcaoServidor implements Runnable{
 				tela.button9.setEnabled(false);
 				if(tela.controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
+					new tEscritaGeral().enviarParaServidor(cliente, "0");
+					new tEscritaGeral().enviarParaServidor(cliente, tela.adversario+":Empate");
 					tela.controlador.terminaJogo(tela.frame, tela.jogador, tela.adversario, "Empate");
 				}
 				tela.minhaVez=true;

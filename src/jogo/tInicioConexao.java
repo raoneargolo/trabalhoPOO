@@ -137,11 +137,15 @@ public class tInicioConexao implements Runnable {
 					
 					Scanner s2 = new Scanner(cliente.getInputStream());
 					String acaojogador;
+					String recebeResultado;
+					String[] splitter;
 					
 					PrintStream saidaAcao;
 					
 					while(s2.hasNextLine()) {
 						acaojogador=s2.nextLine();
+						if(acaojogador.equals("0"))
+							break;
 						if(objJogador.getNomeUsuario().equals(objIniciarPartida.getObjJogador1().getNomeUsuario())) {
 							saidaAcao=new PrintStream(objIniciarPartida.getCliente2().getOutputStream());
 							saidaAcao.flush();
@@ -154,6 +158,9 @@ public class tInicioConexao implements Runnable {
 							saidaAcao.flush();
 						}
 					}
+					recebeResultado = s2.nextLine();
+					splitter = recebeResultado.split(":");
+					objJogador.computarResultado(splitter[0], splitter[1]);
 					s2.close();
 
 				}
