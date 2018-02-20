@@ -11,7 +11,7 @@ public class ServidorMestre {
     public static void main(String[] args) throws IOException {
     	Map<String, String> mapa;
     	LerUsuario lu;
-    	JogoDaVelha objJogoDaVelha=null;
+//    	JogoDaVelha objJogoDaVelha=null;
     	int contJogadores=0;
     	
         ServerSocket servidor = new ServerSocket(12346);
@@ -30,12 +30,12 @@ public class ServidorMestre {
             
             if(contJogadores%2==0) {
             	objIniciarPartida=new tIniciarPartida();
-            	objJogoDaVelha=new JogoDaVelha();
+//            	objJogoDaVelha=new JogoDaVelha();
             }
             contJogadores++;
             
         	//cria um objeto que vai tratar a conexão
-            tInicioConexao tIni = new tInicioConexao(cliente, lu.lerUsuarios(), objIniciarPartida, objJogoDaVelha);
+            tInicioConexao tIni = new tInicioConexao(cliente, lu.lerUsuarios(), objIniciarPartida/*, objJogoDaVelha*/);
         	
             // cria a thread em cima deste objeto
             Thread threadInicio = new Thread(tIni);

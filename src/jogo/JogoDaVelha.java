@@ -27,12 +27,19 @@ public class JogoDaVelha implements Serializable{
 	public boolean flag=true,whoseTurn;
 	int[][] matriz= {{2,2,2},{2,2,2},{2,2,2},};
 	private JFrame frame;
-	private Jogador jogador1;
-	private Jogador jogador2;
+	private Jogador jogador;
+	private String adversario;
+	private boolean minhaVez=false;
+	private boolean primeiro=false;
 	
-	public JogoDaVelha(/*Jogador jogador1*/) {
-		//this.jogador1=jogador1;
-		//this.jogador2=jogador2;
+	public JogoDaVelha(String minhaPosicao, Jogador jogador, String adversario) {
+		if(minhaPosicao.equals("j1")) {			
+			minhaVez=true;
+			primeiro=true;
+		}
+		this.jogador=jogador;
+		this.adversario=adversario;
+		
 		if(defineX==0) {
 			whoseTurn=true;
 		}
@@ -42,10 +49,10 @@ public class JogoDaVelha implements Serializable{
 		//initialize();
 	}
 	
-	public void Receberjogadores(Jogador jogador1, Jogador jogador2) {
-		this.jogador1=jogador1;
-		this.jogador2=jogador2;
-	}
+//	public void Receberjogadores(Jogador jogador1, Jogador jogador2) {
+//		this.jogador1=jogador1;
+//		this.jogador2=jogador2;
+//	}
 	
 	/**
 	 * Launch the application.
@@ -91,7 +98,7 @@ public class JogoDaVelha implements Serializable{
 					button1.setText("X");
 					if(controlador.checkMatriz(matriz,1,0)) {
 						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=false;
 				}
@@ -100,14 +107,14 @@ public class JogoDaVelha implements Serializable{
 					button1.setText("O");
 					if(controlador.checkMatriz(matriz,1,1)) {
 						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=true;
 				}
 				button1.setEnabled(false);
 				if(controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador1);
+					controlador.terminaJogo(true,frame, jogador);
 				}
 			}
 		});
@@ -124,7 +131,7 @@ public class JogoDaVelha implements Serializable{
 					button2.setText("X");
 					if(controlador.checkMatriz(matriz,2,0)) {
 						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=false;
 				}
@@ -133,14 +140,14 @@ public class JogoDaVelha implements Serializable{
 					button2.setText("O");
 					if(controlador.checkMatriz(matriz,2,1)) {
 						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=true;
 				}
 				button2.setEnabled(false);
 				if(controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador1);
+					controlador.terminaJogo(true,frame, jogador);
 				}
 			}
 		});
@@ -156,7 +163,7 @@ public class JogoDaVelha implements Serializable{
 					button3.setText("X");
 					if(controlador.checkMatriz(matriz,3,0)) {
 						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=false;
 				}
@@ -165,14 +172,14 @@ public class JogoDaVelha implements Serializable{
 					button3.setText("O");
 					if(controlador.checkMatriz(matriz,3,1)) {
 						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=true;
 				}
 				button3.setEnabled(false);
 				if(controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador1);
+					controlador.terminaJogo(true,frame, jogador);
 				}
 			}
 		});
@@ -188,7 +195,7 @@ public class JogoDaVelha implements Serializable{
 					button4.setText("X");
 					if(controlador.checkMatriz(matriz,4,0)) {
 						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=false;
 				}
@@ -197,14 +204,14 @@ public class JogoDaVelha implements Serializable{
 					button4.setText("O");
 					if(controlador.checkMatriz(matriz,4,1)) {
 						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=true;
 				}
 				button4.setEnabled(false);
 				if(controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador1);
+					controlador.terminaJogo(true,frame, jogador);
 				}
 			}
 		});
@@ -220,7 +227,7 @@ public class JogoDaVelha implements Serializable{
 					button5.setText("X");
 					if(controlador.checkMatriz(matriz,5,0)) {
 						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=false;
 				}
@@ -229,14 +236,14 @@ public class JogoDaVelha implements Serializable{
 					button5.setText("O");
 					if(controlador.checkMatriz(matriz,5,1)) {
 						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=true;
 				}
 				button5.setEnabled(false);
 				if(controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador1);
+					controlador.terminaJogo(true,frame, jogador);
 				}
 			}
 		});
@@ -252,7 +259,7 @@ public class JogoDaVelha implements Serializable{
 					button6.setText("X");
 					if(controlador.checkMatriz(matriz,6,0)) {
 						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=false;
 				}
@@ -261,14 +268,14 @@ public class JogoDaVelha implements Serializable{
 					button6.setText("O");
 					if(controlador.checkMatriz(matriz,6,1)) {
 						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=true;
 				}
 				button6.setEnabled(false);
 				if(controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador1);
+					controlador.terminaJogo(true,frame, jogador);
 				}
 			}
 		});
@@ -284,7 +291,7 @@ public class JogoDaVelha implements Serializable{
 					button7.setText("X");
 					if(controlador.checkMatriz(matriz,7,0)) {
 						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=false;
 				}
@@ -293,14 +300,14 @@ public class JogoDaVelha implements Serializable{
 					button7.setText("O");
 					if(controlador.checkMatriz(matriz,7,1)) {
 						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=true;
 				}
 				button7.setEnabled(false);
 				if(controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador1);
+					controlador.terminaJogo(true,frame, jogador);
 				}
 			}
 		});
@@ -316,7 +323,7 @@ public class JogoDaVelha implements Serializable{
 					button8.setText("X");
 					if(controlador.checkMatriz(matriz,8,0)) {
 						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=false;
 				}
@@ -325,14 +332,14 @@ public class JogoDaVelha implements Serializable{
 					button8.setText("O");
 					if(controlador.checkMatriz(matriz,8,1)) {
 						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=true;
 				}
 				button8.setEnabled(false);
 				if(controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador1);
+					controlador.terminaJogo(true,frame, jogador);
 				}
 			}
 		});
@@ -348,7 +355,7 @@ public class JogoDaVelha implements Serializable{
 					button9.setText("X");
 					if(controlador.checkMatriz(matriz,9,0)) {
 						JOptionPane.showMessageDialog(null, "X venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=false;
 				}
@@ -357,14 +364,14 @@ public class JogoDaVelha implements Serializable{
 					button9.setText("O");
 					if(controlador.checkMatriz(matriz,9,1)) {
 						JOptionPane.showMessageDialog(null, "O venceu!");
-						controlador.terminaJogo(false,frame, jogador1);
+						controlador.terminaJogo(false,frame, jogador);
 					}
 					flag=true;
 				}
 				button9.setEnabled(false);
 				if(controlador.verificaEmpate()){
 					JOptionPane.showMessageDialog(null, "Deu velha");
-					controlador.terminaJogo(true,frame, jogador1);
+					controlador.terminaJogo(true,frame, jogador);
 				}
 			}
 		});
@@ -381,12 +388,20 @@ public class JogoDaVelha implements Serializable{
 		
 		JLabel label = new JLabel("");
 		label.setBounds(530, 40, 71, 14);
-		frame.getContentPane().add(label);
-		label.setText(jogador1.getNomeUsuario());
+		frame.getContentPane().add(label);		
+		if(primeiro) {
+			label.setText(jogador.getNomeUsuario());
+		}else {
+			label.setText(adversario);
+		}	
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setBounds(530, 154, 71, 14);
 		frame.getContentPane().add(label_1);
-		label_1.setText(jogador2.getNomeUsuario());
+		if(primeiro) {
+			label_1.setText(adversario);
+		}else {
+			label_1.setText(jogador.getNomeUsuario());
+		}
 	}
 }

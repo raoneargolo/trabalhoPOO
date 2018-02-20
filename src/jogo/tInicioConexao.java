@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Map;
 import java.util.Scanner;
@@ -19,14 +20,14 @@ public class tInicioConexao implements Runnable {
 	tIniciarPartida objIniciarPartida = null;
 	String inputFromClient;
 	String buffer[];
-	JogoDaVelha objJogoDaVelha;
+//	JogoDaVelha objJogoDaVelha;
 
-	public tInicioConexao(Socket cliente, Map<String, String> mapaU, tIniciarPartida objIniciarPartida,
-			JogoDaVelha objJogoDaVelha) throws IOException {
+	public tInicioConexao(Socket cliente, Map<String, String> mapaU, tIniciarPartida objIniciarPartida/*,
+			JogoDaVelha objJogoDaVelha*/) throws IOException {
 		this.cliente = cliente;
 		this.mapaU = mapaU;
 		this.objIniciarPartida = objIniciarPartida;
-		this.objJogoDaVelha = objJogoDaVelha;
+//		this.objJogoDaVelha = objJogoDaVelha;
 	}
 
 	@Override
@@ -123,10 +124,20 @@ public class tInicioConexao implements Runnable {
 							
 					}
 					
-					objJogoDaVelha.Receberjogadores(objIniciarPartida.getObjJogador1(),objIniciarPartida.getObjJogador2());
-					ObjectOutputStream outToClient = new ObjectOutputStream(cliente.getOutputStream());
-					outToClient.writeObject(objJogoDaVelha);
-					outToClient.flush();
+					String adversario;
+					if(objJogador.getNomeUsuario().equals(objIniciarPartida.getObjJogador1().getNomeUsuario())) {
+						adversario="j1:"+objIniciarPartida.getObjJogador2().getNomeUsuario();
+					}else {
+						adversario="j2:"+objIniciarPartida.getObjJogador1().getNomeUsuario();
+					}
+					PrintStream saidaNomeAdversario = new PrintStream(cliente.getOutputStream());
+					saidaNomeAdversario.flush();
+					saidaNomeAdversario.println(adversario);
+					saidaNomeAdversario.flush();
+//					objJogoDaVelha.Receberjogadores(objIniciarPartida.getObjJogador1(),objIniciarPartida.getObjJogador2());
+//					ObjectOutputStream outToClient = new ObjectOutputStream(cliente.getOutputStream());
+//					outToClient.writeObject(objJogoDaVelha);
+//					outToClient.flush();
 
 				}
 			}
